@@ -1,0 +1,54 @@
+OpenCart için E-Piksel HTML Modülü
+
+===== Turkish Installation Documentation =====
+
+OpenCart? 1.5.1 ve sonrasýný destekler
+Bu modül www.e-piksel.com tarafýndan ücretsiz olarak daðýtýlmaktadýr.
+Yeni modül pozisyonlarýn çalýþmasý için vqmod kurulu olmasý gerekmektedir ya da deðiþiklikleri elle yapmanýz gereklidir.
+Tüm dosyalarý opencart kurduðunuz dizine yükleyiniz.
+Özel Þablonlarýnýz için catalog\view\theme\default dizini içindeki dizinleri kendi temanýzýn içine yükleyiniz -> catalog\view\theme\SIZIN TEMANIZ
+Yönetim -> Kullanýcýlar -> Kullanýcý Gruplarý -> Üst Yönetici grubunu düzenle seçeneðine týklayýn ve tüm kutularý seçili hale getiriniz.
+Eklentiler -> Modüller -> E-Piksel HTML Modülünü kurun
+Modülü düzenle seçeneðine týklayýnýz ve modül ayarlarýný kendinize göre özelleþtirin.
+VQMOD için bakýnýz: http://code.google.com/p/vqmod/
+
+Manuel Kurulum
+catalog/controller/common/header.php aç
+
+BUL
+
+$this->render();
+ÖNCESÝNE EKLE
+
+$this->children = array(
+          'common/header_html'
+          );
+catalog/view/theme/default/template/common/header.tpl aç
+
+BUL
+
+<div id="notification"></div>
+SONRASINA EKLE
+
+<div id="header_html"><?php echo $header_html; ?></div>
+catalog/controller/common/footer.php aç
+
+BUL
+
+$this->render();
+ÖNCESÝNE EKLE
+
+$this->children = array(
+          'common/footer_html'
+          );
+catalog/view/theme/default/template/common/footer.tpl aç
+
+BUL
+
+<div id="footer">
+ÖNCESÝNE EKLE
+
+<div id="footer_html"><?php echo $footer_html; ?></div>
+
+---------------------------
+www.e-piksel.com

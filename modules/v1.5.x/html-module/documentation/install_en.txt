@@ -1,0 +1,54 @@
+E-Piksel HTML Module for OpenCart
+
+===== English Installation Documentation =====
+
+OpenCart? 1.5.1 and later support
+This module is distributed free by www.e-piksel.com
+Must be installed vqmod for the new module positions or need to edit the files manually.
+Install all files to the directory installed OpenCart?.
+For Custom Template -> catalog\view\theme\default directory in the install directory of your template -> catalog\view\theme\YOUR THEME
+Goto Admin -> Users -> User Groups and Edit the Top Adminstrator group. Check All boxes
+Goto Extensions -> Modules -> Install E-Piksel HTML Module
+Module edit and customize
+Look for VQMOD http://code.google.com/p/vqmod/
+
+Manual Install
+Edit your catalog/controller/common/header.php file
+
+FIND
+
+$this->render();
+ADD BEFORE
+
+$this->children = array(
+          'common/header_html'
+          );
+Edit your catalog/view/theme/default/template/common/header.tpl file
+
+FIND
+
+<div id="notification"></div>
+ADD AFTER
+
+<div id="header_html"><?php echo $header_html; ?></div>
+Edit your catalog/controller/common/footer.php file
+
+FIND
+
+$this->render();
+ADD BEFORE
+
+$this->children = array(
+          'common/footer_html'
+          );
+Edit your catalog/view/theme/default/template/common/footer.tpl file
+
+FIND
+
+<div id="footer">
+ADD BEFORE
+
+<div id="footer_html"><?php echo $footer_html; ?></div>
+
+---------------------------
+www.e-piksel.com
