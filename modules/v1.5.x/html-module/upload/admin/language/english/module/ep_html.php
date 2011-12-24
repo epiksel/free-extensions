@@ -13,12 +13,10 @@ $_['heading_title']       = '<font color="green"><b>E-Piksel HTML Module</b></fo
 // Text
 $_['text_module']         = 'Modules';
 $_['text_success']        = 'Success: You have modified module E-Piksel HTML!';
-$_['text_header_html']	  = 'Header';
 $_['text_content_top']    = 'Content Top';
 $_['text_content_bottom'] = 'Content Bottom';
 $_['text_column_left']    = 'Column Left';
 $_['text_column_right']   = 'Column Right';
-$_['text_footer_html']	  = 'Footer';
 
 $_['text_or']			  = 'or';
 $_['text_create_paypal']  = '<a onclick="window.open(\'https://www.paypal.com/uk/mrb/pal=YS4L83BNSEC6A\');">Create your PayPal account</a>';

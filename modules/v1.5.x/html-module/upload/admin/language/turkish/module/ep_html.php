@@ -13,12 +13,10 @@ $_['heading_title']       = '<font color="green"><b>E-Piksel HTML Modül</b></fo
 // Text
 $_['text_module']         = 'Modüller';
 $_['text_success']        = 'Başarılı: E-Piksel HTML modülü güncellendi!';
-$_['text_header_html']	  = 'En Üstte';
 $_['text_content_top']    = 'İçerik Üst';
 $_['text_content_bottom'] = 'İçerik Alt';
 $_['text_column_left']    = 'İçerik Sol';
 $_['text_column_right']   = 'İçerik Sağ';
-$_['text_footer_html']	  = 'En Altta';
 
 $_['text_or']			  = 'ya da';
 $_['text_create_paypal']  = '<a onclick="window.open(\'https://www.paypal.com/uk/mrb/pal=YS4L83BNSEC6A\');">PayPal Hesabı Oluşturun</a>';
