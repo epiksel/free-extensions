@@ -28,7 +28,7 @@ $_['entry_heading']		  = 'Başlık:';
 $_['entry_description']   = 'HTML Kod / Mesaj:';
 $_['entry_layout']        = 'Bölüm:';
 $_['entry_position']      = 'Pozisyon:';
-$_['entry_box_status']    = 'Kutu Durumu:';
+$_['entry_box_status']    = 'Kutu Görünümü:';
 $_['entry_status']        = 'Durumu:';
 $_['entry_sort_order']    = 'Sıralama:';
 

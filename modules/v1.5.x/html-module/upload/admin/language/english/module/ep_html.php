@@ -28,7 +28,7 @@ $_['entry_heading']		  = 'Title:';
 $_['entry_description']   = 'HTML Code / Message:';
 $_['entry_layout']        = 'Layout:';
 $_['entry_position']      = 'Position:';
-$_['entry_box_status']    = 'Box Status:';
+$_['entry_box_status']    = 'Box View:';
 $_['entry_status']        = 'Status:';
 $_['entry_sort_order']    = 'Sort Order:';
 
