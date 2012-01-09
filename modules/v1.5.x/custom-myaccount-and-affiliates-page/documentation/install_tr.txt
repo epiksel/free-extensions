@@ -5,7 +5,10 @@ OpenCart için E-Piksel Custom Account Page Extension
 catalog dizinini opencartý kurduðunuz dizine yükleyin.
 Üzerine yazýlsýn mý sorusuna evet deyin.
 
-catalog\view\theme\default\stylesheet\stylesheet.css açýn
+Özel þablonlarýnýz için
+upload\none vqmod\catalog\view\theme\default içindeki dosyalarý -> catalog\view\theme\SÝZÝN TEMANIZ içine yükleyiniz.
+
+catalog\view\theme\SÝZÝN TEMANIZ\stylesheet\stylesheet.css açýn
 
 EKLEYÝN
 
