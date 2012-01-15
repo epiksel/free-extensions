@@ -4,7 +4,7 @@
   <vqmver>2.0.0</vqmver>
   <author>www.e-piksel.com</author>
   <file name="catalog/view/theme/*/template/account/account.tpl">
-    <operation error="skip">
+    <operation>
       <search position="all">
         <![CDATA[]]>
       </search>
@@ -58,7 +58,7 @@
     </operation>
   </file>
   <file name="catalog/view/theme/*/template/affiliate/account.tpl">
-    <operation error="skip">
+    <operation>
       <search position="all">
         <![CDATA[]]>
       </search>
@@ -100,7 +100,7 @@
     </operation>
   </file>
   <file name="catalog/view/theme/*/template/common/header.tpl">
-    <operation error="skip">
+    <operation>
       <search position="before">
         <![CDATA[</head>]]>
       </search>
