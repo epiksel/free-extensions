@@ -9,7 +9,11 @@
         <![CDATA[]]>
       </search>
       <add trim="true">
-        <![CDATA[<?php echo $header; ?><?php echo $column_left; ?><?php echo $column_right; ?>
+        <![CDATA[<?php echo $header; ?>
+  <?php if ($success) { ?>
+  <div class="success"><?php echo $success; ?></div>
+  <?php } ?>
+<?php echo $column_left; ?><?php echo $column_right; ?>
 <div id="content"><?php echo $content_top; ?>
   <div class="breadcrumb">
     <?php foreach ($breadcrumbs as $breadcrumb) { ?>
@@ -17,9 +21,6 @@
     <?php } ?>
   </div>
   <h1><?php echo $heading_title; ?></h1>
-  <?php if ($success) { ?>
-  <div class="success"><?php echo $success; ?></div>
-  <?php } ?>
     <h2><?php echo $text_my_account; ?></h2>
     <div class="content">
       <ul>
@@ -38,9 +39,9 @@
         <div class="account_left_column"><img src="catalog/view/theme/<?php echo $this->config->get('config_template') ?>/image/account/orders.png" alt="Order History"><a href="<?php echo $order; ?>"><?php echo $text_my_orders; ?></a><br><?php echo $text_order; ?></div>
         
         <div class="account_right_column"><img src="catalog/view/theme/<?php echo $this->config->get('config_template') ?>/image/account/download.png" alt="<?php echo $text_download; ?>"><a href="<?php echo $download; ?>"><?php echo $text_download; ?></a><br><?php echo $text_download; ?></div>
-        
+        <?php if ($reward) { ?>
         <div class="account_left_column"><img src="catalog/view/theme/<?php echo $this->config->get('config_template') ?>/image/account/reward.png" alt="<?php echo $text_reward; ?>"><a href="<?php echo $reward; ?>"><?php echo $text_reward; ?></a><br><?php echo $text_reward; ?></div>
-        
+        <?php } ?>
         <div class="account_right_column"><img src="catalog/view/theme/<?php echo $this->config->get('config_template') ?>/image/account/return.png" alt="<?php echo $text_return; ?>"><a href="<?php echo $return; ?>"><?php echo $text_return; ?></a><br><?php echo $text_return; ?></div>
         
         <div class="account_left_column"><img src="catalog/view/theme/<?php echo $this->config->get('config_template') ?>/image/account/trans.png" alt="<?php echo $text_transaction; ?>"><a href="<?php echo $transaction; ?>"><?php echo $text_transaction; ?></a><br><?php echo $text_transaction; ?></div>
@@ -53,7 +54,7 @@
       </ul>
     </div>
   <?php echo $content_bottom; ?></div>
-<?php echo $footer; ?>]]>
+<?php echo $footer; ?> ]]>
       </add>
     </operation>
   </file>
@@ -63,7 +64,11 @@
         <![CDATA[]]>
       </search>
       <add trim="true">
-        <![CDATA[<?php echo $header; ?><?php echo $column_left; ?><?php echo $column_right; ?>
+        <![CDATA[<?php echo $header; ?>
+  <?php if ($success) { ?>
+  <div class="success"><?php echo $success; ?></div>
+  <?php } ?>
+<?php echo $column_left; ?><?php echo $column_right; ?>
 <div id="content"><?php echo $content_top; ?>
   <div class="breadcrumb">
     <?php foreach ($breadcrumbs as $breadcrumb) { ?>
@@ -71,9 +76,6 @@
     <?php } ?>
   </div>
   <h1><?php echo $heading_title; ?></h1>
-  <?php if ($success) { ?>
-  <div class="success"><?php echo $success; ?></div>
-  <?php } ?>
   <h2><?php echo $text_my_account; ?></h2>
   <div class="content">
     <ul>
