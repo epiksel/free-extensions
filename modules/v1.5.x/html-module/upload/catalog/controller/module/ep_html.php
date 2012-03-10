@@ -2,8 +2,6 @@
 class ControllerModuleEPHtml extends Controller {
 	protected function index($setting) {
 		
-		$this->document->addStyle('catalog/view/theme/' . $this->config->get('config_template') . '/stylesheet/html_module.css');
-		
 		$this->data['box_status'] = $setting['box_status'];
 		
     	$this->data['heading'] = html_entity_decode($setting['heading'][$this->config->get('config_language_id')], ENT_QUOTES, 'UTF-8');

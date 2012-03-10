@@ -1,6 +1,6 @@
 <modification>
   <id>E-Piksel Custom My Account and Affiliates Page</id>
-  <version>1.0.0</version>
+  <version>1.2.0</version>
   <vqmver>2.0.0</vqmver>
   <author>www.e-piksel.com</author>
   <file name="catalog/view/theme/*/template/account/account.tpl">
