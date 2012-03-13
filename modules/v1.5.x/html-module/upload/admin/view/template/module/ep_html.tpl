@@ -127,7 +127,7 @@
       <br />
       <?php echo $text_create_paypal; ?>
       <br /><br />
-      <?php echo $text_developer; ?> <a href="//www.e-piksel.com" target="_blank"><?php echo $text_html_version; ?></a></div>
+      <?php echo $text_developer; ?> <a href="//www.e-piksel.com" target="_blank"><?php echo $text_module_version; ?></a></div>
   </div>
 <script type="text/javascript" src="view/javascript/ckeditor/ckeditor.js"></script> 
 <script type="text/javascript"><!--
@@ -135,6 +135,7 @@
 <?php foreach ($modules as $module) { ?>
 <?php foreach ($languages as $language) { ?>
 CKEDITOR.replace('description-<?php echo $module_row; ?>-<?php echo $language['language_id']; ?>', {
+	filebrowserBrowseUrl: 'index.php?route=common/filemanager&token=<?php echo $token; ?>',
 	filebrowserImageBrowseUrl: 'index.php?route=common/filemanager&token=<?php echo $token; ?>',
 	filebrowserFlashBrowseUrl: 'index.php?route=common/filemanager&token=<?php echo $token; ?>',
 	filebrowserUploadUrl: 'index.php?route=common/filemanager&token=<?php echo $token; ?>',
@@ -214,6 +215,7 @@ function addModule() {
 	
 	<?php foreach ($languages as $language) { ?>
 	CKEDITOR.replace('description-' + module_row + '-<?php echo $language['language_id']; ?>', {
+		filebrowserBrowseUrl: 'index.php?route=common/filemanager&token=<?php echo $token; ?>',
 		filebrowserImageBrowseUrl: 'index.php?route=common/filemanager&token=<?php echo $token; ?>',
 		filebrowserFlashBrowseUrl: 'index.php?route=common/filemanager&token=<?php echo $token; ?>',
 		filebrowserUploadUrl: 'index.php?route=common/filemanager&token=<?php echo $token; ?>',

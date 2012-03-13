@@ -28,7 +28,7 @@ class ControllerModuleEPTwitterTimeline extends Controller {
 		$this->data['text_or'] = $this->language->get('text_or');
 		$this->data['text_create_paypal'] = $this->language->get('text_create_paypal');
 		$this->data['text_developer'] = $this->language->get('text_developer');
-		$this->data['text_tt_version'] = $this->language->get('text_tt_version');
+		$this->data['text_module_version'] = $this->language->get('text_module_version');
 		
 		$this->data['entry_description'] = $this->language->get('entry_description');
 		$this->data['entry_layout'] = $this->language->get('entry_layout');

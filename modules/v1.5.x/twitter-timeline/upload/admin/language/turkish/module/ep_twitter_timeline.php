@@ -21,7 +21,7 @@ $_['text_column_right']			= 'Sağ Blokta';
 $_['text_or']					= 'ya da';
 $_['text_create_paypal']		= '<a onclick="window.open(\'https://www.paypal.com/uk/mrb/pal=YS4L83BNSEC6A\');">PayPal Hesabı Oluşturun</a>';
 $_['text_developer']			= 'Geliştirici:';
-$_['text_tt_version']			= 'E-Piksel Twitter Timeline Modül 1.0';
+$_['text_module_version']		= 'E-Piksel Twitter Timeline Modül 1.1.0';
 
 // Entry
 $_['entry_twitter_user']		= 'Twitter Kullanıcı Adı:';

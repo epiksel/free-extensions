@@ -21,7 +21,7 @@ $_['text_column_right']   = 'Column Right';
 $_['text_or']			  = 'or';
 $_['text_create_paypal']  = '<a onclick="window.open(\'https://www.paypal.com/uk/mrb/pal=YS4L83BNSEC6A\');">Create your PayPal account</a>';
 $_['text_developer']	  = 'Developer:';
-$_['text_html_version']	  = 'E-Piksel Html Module 1.1';
+$_['text_module_version'] = 'E-Piksel Html Module 1.2.0';
 
 // Entry
 $_['entry_heading']		  = 'Title:';
