@@ -44,8 +44,6 @@ class ControllerModuleEPHtml extends Controller {
 		$this->data['button_remove'] = $this->language->get('button_remove');
 		
 		$this->data['tab_module'] = $this->language->get('tab_module');
-		
-		$this->data['token'] = $this->session->data['token'];
 
  		if (isset($this->error['warning'])) {
 			$this->data['error_warning'] = $this->error['warning'];
@@ -76,7 +74,9 @@ class ControllerModuleEPHtml extends Controller {
 		$this->data['action'] = $this->url->link('module/ep_html', 'token=' . $this->session->data['token'], 'SSL');
 		
 		$this->data['cancel'] = $this->url->link('extension/module', 'token=' . $this->session->data['token'], 'SSL');
-
+		
+		$this->data['token'] = $this->session->data['token'];
+		
 		$this->data['modules'] = array();
 		
 		if (isset($this->request->post['ep_html_module'])) {
