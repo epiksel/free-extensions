@@ -21,7 +21,8 @@
           <a href="#tab-module-<?php echo $module_row; ?>" id="module-<?php echo $module_row; ?>"><?php echo $tab_module . ' ' . $module_row; ?>&nbsp;<img src="view/image/delete.png" alt="" onclick="$('.vtabs a:first').trigger('click'); $('#module-<?php echo $module_row; ?>').remove(); $('#tab-module-<?php echo $module_row; ?>').remove(); return false;" /></a>
           <?php $module_row++; ?>
           <?php } ?>
-          <span id="module-add"><?php echo $button_add_module; ?>&nbsp;<img src="view/image/add.png" alt="" onclick="addModule();" /></span> </div>
+          <span id="module-add"><?php echo $button_add_module; ?>&nbsp;<img src="view/image/add.png" alt="" onclick="addModule();" /></span>
+        <a href="#tab-about"><?php echo $tab_about; ?></a></div>
         <?php $module_row = 1; ?>
         <?php foreach ($modules as $module) { ?>
         <div id="tab-module-<?php echo $module_row; ?>" class="vtabs-content">
@@ -114,20 +115,45 @@
         </div>
         <?php $module_row++; ?>
         <?php } ?>
+      <div id="tab-about" class="vtabs-content">
+        <table class="form list">
+        <tr>
+          <td style="min-width:300px;"><?php echo $text_extension_name; ?></td>
+          <td style="min-width:400px;"><?php echo $entry_extension_name; ?></td>
+        </tr>
+        <tr>
+          <td><?php echo $text_extension_version; ?></td>
+          <td><b><?php echo $extension_version; ?></b> [ <?php echo $extension_type; ?> ]</td>
+        </tr>
+        <tr>
+          <td><?php echo $text_extension_compat; ?></td>
+          <td><?php echo $extension_compat; ?></td>
+        </tr>
+        <tr>
+          <td><?php echo $text_extension_url; ?></td>
+          <td><a href="//<?php echo $extension_url; ?>" target="_blank"><?php echo $extension_url ?></a></td>
+        </tr>
+        <tr>
+          <td><?php echo $text_extension_support; ?></td>
+          <td>
+            <a href="//<?php echo $extension_support; ?>" target="_blank"><?php echo $entry_extension_support; ?></a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="//<?php echo $extension_contact; ?>" target="_blank"><?php echo $entry_extension_contact; ?></a>
+          </td>
+        </tr>
+        <tr>
+          <td><?php echo $text_extension_donate; ?></td>
+          <td><?php echo $copyright; ?>&nbsp;&nbsp;|&nbsp;&nbsp;
+          	<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+				<input type="hidden" name="cmd" value="_s-xclick">
+				<input type="hidden" name="hosted_button_id" value="B35J6PKLDZGGS">
+				<input type="image" src="https://www.paypalobjects.com/en_GB/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal — The safer, easier way to pay online.">
+				<img alt="" border="0" src="https://www.paypalobjects.com/tr_TR/i/scr/pixel.gif" width="1" height="1">
+			</form>
+&nbsp;&nbsp;<?php echo $text_or; ?>&nbsp;&nbsp;<?php echo $text_create_paypal; ?></td>
+        </tr>
+      </table>
+      </div>
       </form>
     </div>
-    <div style="text-align:center; margin-top:20px;">
-      <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
-        <input type="hidden" name="cmd" value="_s-xclick">
-        <input type="hidden" name="hosted_button_id" value="B35J6PKLDZGGS">
-        <input type="image" src="https://www.paypalobjects.com/en_US/GB/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal — The safer, easier way to pay online.">
-        <img alt="" border="0" src="https://www.paypalobjects.com/tr_TR/i/scr/pixel.gif" width="1" height="1">
-      </form>
-      <?php echo $text_or; ?>
-      <br />
-      <?php echo $text_create_paypal; ?>
-      <br /><br />
-      <?php echo $text_developer; ?> <a href="//www.e-piksel.com" target="_blank"><?php echo $text_module_version; ?></a></div>
   </div>
 <script type="text/javascript" src="view/javascript/ckeditor/ckeditor.js"></script> 
 <script type="text/javascript"><!--

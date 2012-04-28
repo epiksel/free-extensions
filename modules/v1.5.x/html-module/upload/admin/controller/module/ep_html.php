@@ -1,4 +1,9 @@
 <?php
+/* Developer: Ekrem KAYA
+Web Page: www.e-piksel.com */
+
+define('EPHTML_VERSION', "1.2.2");
+
 class ControllerModuleEPHtml extends Controller {
 	private $error = array(); 
 	 
@@ -27,8 +32,6 @@ class ControllerModuleEPHtml extends Controller {
 		$this->data['text_column_right'] = $this->language->get('text_column_right');
 		$this->data['text_or'] = $this->language->get('text_or');
 		$this->data['text_create_paypal'] = $this->language->get('text_create_paypal');
-		$this->data['text_developer'] = $this->language->get('text_developer');
-		$this->data['text_module_version'] = $this->language->get('text_module_version');
 		
 		$this->data['entry_heading'] = $this->language->get('entry_heading');
 		$this->data['entry_description'] = $this->language->get('entry_description');
@@ -44,6 +47,28 @@ class ControllerModuleEPHtml extends Controller {
 		$this->data['button_remove'] = $this->language->get('button_remove');
 		
 		$this->data['tab_module'] = $this->language->get('tab_module');
+		
+		/* About Tab Begin */
+		$this->data['text_extension_name'] = $this->language->get('text_extension_name');
+		$this->data['entry_extension_name'] = $this->language->get('entry_extension_name');
+		$this->data['text_extension_version'] = $this->language->get('text_extension_version');
+		$this->data['extension_version'] = EPHTML_VERSION;
+		$this->data['extension_type'] = 'None vQmod';
+		$this->data['text_extension_compat'] = $this->language->get('text_extension_compat');
+		$this->data['extension_compat'] = 'OpenCart 1.5.1.X, 1.5.2.X';
+		$this->data['text_extension_url'] = $this->language->get('text_extension_url');
+		$this->data['extension_url'] = 'www.e-piksel.com/html-module-unlimited-oc-free001-15x';
+		$this->data['text_extension_support'] = $this->language->get('text_extension_support');
+		$this->data['extension_support'] = 'www.e-piksel.com/support';
+		$this->data['entry_extension_support'] = $this->language->get('entry_extension_support');
+		$this->data['entry_extension_contact'] = $this->language->get('entry_extension_contact');
+		$this->data['extension_contact'] = 'www.e-piksel.com/contact-us';
+		$this->data['text_requesting_support'] = $this->language->get('text_requesting_support');
+		$this->data['text_extension_donate'] = $this->language->get('text_extension_donate');		
+		$this->data['copyright'] = $this->language->get('text_copyright');
+		
+		$this->data['tab_about'] = $this->language->get('tab_about');
+		/* About Tab End */
 
  		if (isset($this->error['warning'])) {
 			$this->data['error_warning'] = $this->error['warning'];
