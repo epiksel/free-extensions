@@ -250,7 +250,7 @@ class ModelAccountCustomerSupport extends Model {
 		$mail->port = $this->config->get('config_smtp_port');
 		$mail->timeout = $this->config->get('config_smtp_timeout');			
 		
-		$mail->setSubject($subject);
+		$mail->setSubject(html_entity_decode($subject, ENT_QUOTES, 'UTF-8'));
 		$mail->setHtml($html);
 		$mail->setText(html_entity_decode($text, ENT_QUOTES, 'UTF-8'));
 		$mail->addAttachment(DIR_IMAGE . $this->config->get('config_logo'));
@@ -261,7 +261,7 @@ class ModelAccountCustomerSupport extends Model {
 		$mail->send();
 		
 		// 	Send to additional alert emails
-		$mail->setSubject("[ADMIN]". $subject);
+		$mail->setSubject(html_entity_decode("[ADMIN]". $subject, ENT_QUOTES, 'UTF-8'));
 		$mail->setTo($this->config->get('config_email'));
 		$mail->setHtml($html);
 		$mail->send();

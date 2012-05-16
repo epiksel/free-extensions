@@ -233,7 +233,7 @@ class ModelCatalogCustomerSupport extends Model {
 				$text .= $language->get('text_enquiry'). ": ". nl2br(html_entity_decode($data['enquiry'], ENT_QUOTES, 'UTF-8'))."\n\n";
 				$text .= $language->get('text_lead_url'). ": ". $this->config->get('config_url'). 'index.php?route=account/customer_support';
 				
-				$mail = new Mail(); 
+				$mail = new Mail();
 				$mail->protocol = $this->config->get('config_mail_protocol');
 				$mail->parameter = $this->config->get('config_mail_parameter');
 				$mail->hostname = $this->config->get('config_smtp_host');
@@ -241,13 +241,21 @@ class ModelCatalogCustomerSupport extends Model {
 				$mail->password = $this->config->get('config_smtp_password');
 				$mail->port = $this->config->get('config_smtp_port');
 				$mail->timeout = $this->config->get('config_smtp_timeout');
-				$mail->setTo($this->config->get('config_email'));
-				$mail->setFrom($this->config->get('config_email'));
-				$mail->setSender($this->config->get('config_name'));
+				
 				$mail->setSubject(html_entity_decode($subject, ENT_QUOTES, 'UTF-8'));
 				$mail->setHtml($html);
 				$mail->setText(html_entity_decode($text, ENT_QUOTES, 'UTF-8'));
 				$mail->addAttachment(DIR_IMAGE . $this->config->get('config_logo'));
+				
+				$mail->setTo($parent_data['customer_email']);
+				$mail->setFrom($this->config->get('config_email'));
+				$mail->setSender($this->config->get('config_name'));
+				$mail->send();
+				
+				// 	Send to additional alert emails
+				$mail->setSubject(html_entity_decode("[ADMIN]". $subject, ENT_QUOTES, 'UTF-8'));
+				$mail->setTo($this->config->get('config_email'));
+				$mail->setHtml($html);
 				$mail->send();	
 			}
 			
