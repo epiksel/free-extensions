@@ -1,7 +1,7 @@
 <modification>
   <id>E-Piksel Customer Support</id>
-  <version>3.5.0</version>
-  <vqmver>2.0.0</vqmver>
+  <version>3.5.1</version>
+  <vqmver>2.1.0</vqmver>
   <author>www.e-piksel.com</author>
   <file name="admin/controller/common/header.php">
     <operation>
