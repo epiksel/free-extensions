@@ -155,6 +155,7 @@
       <br /><br />
       <?php echo $text_developer; ?> <a href="//www.e-piksel.com" target="_blank"><?php echo $text_module_version; ?></a></div>
 </div>
+</div>
 <script type="text/javascript"><!--
 var module_row = <?php echo $module_row; ?>;
 

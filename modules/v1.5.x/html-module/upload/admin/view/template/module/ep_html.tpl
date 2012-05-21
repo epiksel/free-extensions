@@ -155,6 +155,7 @@
       </form>
     </div>
   </div>
+</div>
 <script type="text/javascript" src="view/javascript/ckeditor/ckeditor.js"></script> 
 <script type="text/javascript"><!--
 <?php $module_row = 1; ?>
