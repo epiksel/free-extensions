@@ -68,21 +68,21 @@
 				<td class="center" <?php if ($customer_support['customer_support_status']=="Open") { ?> style="color:red;" <?php } ?>><?php echo $customer_support['customer_support_status']; ?></td>
 				<td class="left"><?php echo $customer_support['customer_support_1st_category']; ?></td>
 				<td class="left"><?php echo $customer_support['customer_support_2nd_category']; ?></td>
-	            <td class="left"><?php if($customer_support['reference'] != ''){ ?>[#<?php echo $customer_support['reference']; ?>]<?php } ?> <?php if($customer_support['status'] == 0){ echo "<s>"; } echo $customer_support['subject']; if($customer_support['status'] == 0){ echo "</s> (Deleted by customer)"; }  ?></td>
+	            <td class="left"><?php if($customer_support['reference'] != ''){ ?><a id="enquiry-title-<?php echo $customer_support['reference'];?>">[#<?php echo $customer_support['reference']; ?>]<?php } ?> <?php if($customer_support['status'] == 0){ echo "<s>"; } echo $customer_support['subject']; if($customer_support['status'] == 0){ echo "</s> (Deleted by customer)"; }  ?></a></td>
 	            <td class="left"><?php echo $customer_support['date_added']; ?></td>
 	            <td class="right"><?php foreach ($customer_support['action'] as $action) { ?>
 	              [ <a href="<?php echo $action['href']; ?>"><?php echo $action['text']; ?></a> ]
 	              <?php } ?></td>
 	          </tr>
-	         <tr>
+	         <tr style="display:none;" class="enquiry-detail-<?php echo $customer_support['customer_support_id'];?>">
 	          	<td colspan="3"><?php echo $customer_support['firstname']; ?> <?php echo $customer_support['lastname']; ?></td>
 	          	<td colspan="5" class="content answer" style="padding:10px;"><?php echo nl2br($customer_support['enquiry']);?></td>
 	          </tr>
 	          <?php if(!empty($customer_support['customer_supports_threads'])) { foreach($customer_support['customer_supports_threads'] as $key2 => $thread) { ?>
-	          <tr>
+	          <tr style="display:none;" class="enquiry-detail-<?php echo $customer_support['customer_support_id'];?>">
 	          	<td colspan="3" style="text-align:right;"><?php if($thread['customer_id'] == 0) { echo $text_answered; } else { echo $thread['firstname']." ".$thread['lastname']; } ?></td>
 	          	<td colspan="5" class="answer" style="padding:10px;"><?php if($customer_support['status'] == 0){ echo "<s>"; } echo nl2br($thread['enquiry']); if($customer_support['status'] == 0){ echo "</s> (Deleted by customer)"; } ?>
-	          		<br />(<?php echo $column_date_added; ?>: <?php echo date($this->language->get('date_format_short'), strtotime($thread['date_added']));?>)</td>
+	          		<br />(<?php echo $column_date_added; ?>: <?php echo date($this->language->get('date_format_short'), strtotime($thread['date_added']));?> - <?php echo date($this->language->get('time_format'), strtotime($thread['date_added']));?>)</td>
 	          </tr>
 	          <?php } } } } else { ?>
 	          <tr>
@@ -98,6 +98,14 @@
 </div>
 
 <script type="text/javascript"><!--
+
+<?php foreach ($customer_supports as $customer_support) { ?>
+$('#enquiry-title-<?php echo $customer_support["reference"];?>').click(function() {
+  $('.enquiry-detail-<?php echo $customer_support["customer_support_id"];?>').toggle('slow', function() {
+    // Animation complete.
+  });
+});
+<?php } ?>
 
 function filter() {
 	url = 'index.php?route=catalog/customer_support&token=<?php echo $token; ?>';

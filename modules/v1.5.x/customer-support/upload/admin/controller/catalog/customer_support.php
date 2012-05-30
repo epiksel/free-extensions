@@ -140,6 +140,7 @@ class ControllerCatalogCustomerSupport extends Controller {
 				'subject'     						=> $result['subject'],
 				'enquiry'     						=> $result['enquiry'],
 				'date_added' 						=> date($this->language->get('date_format_short'), strtotime($result['date_added'])),
+				'time_added' 			            => date($this->language->get('time_format'), strtotime($result['date_added'])),
 				'status'				 			=> $result['status'],
 				'selected'   						=> isset($this->request->post['selected']) && in_array($result['customer_support_id'], $this->request->post['selected']),
 				'action'     						=> $action,

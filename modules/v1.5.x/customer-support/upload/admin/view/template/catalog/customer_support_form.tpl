@@ -107,14 +107,14 @@
               <input type="hidden" name="thread_customer_support_id[]" value="<?php echo $thread['customer_support_id'];?>" />
               <textarea name="thread_enquiry[]" style="width:95%;height:150px;"><?php echo $thread['enquiry'];?></textarea>
               <br />
-              (<?php echo $entry_date_added; ?>: <?php echo $thread['date_added'];?>)
+              (<?php echo $entry_date_added; ?> <?php echo $thread['date_added'];?>)
               <?php
 					}
 					else
 					{
 				?>
               <?php echo $thread['enquiry'];?> <br />
-              (<?php echo $entry_date_added; ?>: <?php echo $thread['date_added'];?>)
+              (<?php echo $entry_date_added; ?> <?php echo $thread['date_added'];?>)
               <?php
 					}
 				?></td>
