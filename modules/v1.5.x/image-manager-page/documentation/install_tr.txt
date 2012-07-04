@@ -1,0 +1,14 @@
+=== E-Piksel Resim Yönetim Sayfasý Kurulum ===
+
+Ýlk önce Vqmod kurunuz
+Tüm dosyalarý geçerli opencart dizinine yükleyiniz.
+Yönetim->Kullanýcýlar->Kullanýcý Gruplarý gidin ve Üst Yönetici grubu düzenle deyin ve Tümünü seçerek kaydedin.
+- Bu yeni dosyalar için izin saðlayacaktýr.
+
+Yönetim->Sistem->Image Manager Page
+
+---------------------------
+Thanks,
+E-Piksel E-Ticaret ve Web Tasarýmý
+www.e-piksel.com
+www.twitter.com/epiksel

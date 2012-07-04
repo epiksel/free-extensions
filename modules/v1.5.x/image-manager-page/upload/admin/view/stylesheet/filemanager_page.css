@@ -1,0 +1,84 @@
+#filemanager_menu {
+	clear: both;
+	height: 29px;
+	background: url('../image/menu.png') repeat-x;
+	position: relative;
+	height: 32px;
+	clear: both;
+	padding: 0px 30px;
+	min-width: 900px;
+}
+#filemanager_menu a {
+	color:#FFF;
+}
+#filemanager_menu a:hover {
+	color:#000;
+}
+#column-left {
+	background: #FFF;
+	border: 1px solid #CCC;
+	border-top:none;
+	float: left;
+	width: 25%;
+	height: 450px;
+	overflow: auto;
+	padding-top:5px;
+	margin-bottom:20px;
+}
+#column-right {
+	background: #FFF;
+	border: 1px solid #CCC;
+	border-top:none;
+	float: right;
+	width: 73%;
+	height: 450px;
+	overflow: auto;
+	text-align: center;
+	margin-bottom:20px;
+	padding-top:5px;
+}
+#column-right div {
+	text-align: left;
+	padding: 5px;
+	margin-bottom:55px;
+}
+#column-right a {
+	display: inline-block;
+	text-align: center;
+	border: 1px solid #EEEEEE;
+	cursor: pointer;
+	margin: 5px;
+	padding: 5px;
+}
+#column-right a.selected {
+	border: 1px solid #7DA2CE;
+	background: #EBF4FD;
+}
+#column-right input {
+	display: none;
+}
+#dialog {
+	display: none;
+}
+.filemanager_button {
+	display: block;
+	float: left;
+	padding: 8px 5px 8px 25px;
+	margin-right: 5px;
+	background-position: 5px 6px;
+	background-repeat: no-repeat;
+	cursor: pointer;
+}
+.filemanager_button:hover {
+	background-color: #EEEEEE;
+}
+.thumb {
+	padding: 5px;
+	width: 105px;
+	height: 105px;
+	background: #F7F7F7;
+	border: 1px solid #CCCCCC;
+	cursor: pointer;
+	cursor: move;
+	position: relative;
+}

@@ -1,0 +1,14 @@
+=== E-Piksel Image Manager Page Install ===
+
+Please first vqmod install.
+All files upload your root directory.
+Goto Admin->Users->User Groups and Edit the Top Adminstrator group. Check All boxes.
+- This will ensure you have permissions for all the new files
+
+Admin->System->Image Manager Page
+
+---------------------------
+Thanks,
+E-Piksel E-Commerce and Web Design
+www.e-piksel.com
+www.twitter.com/epiksel
