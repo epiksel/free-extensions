@@ -1,6 +1,6 @@
 <modification>
   <id>E-Piksel Image Manager Page</id>
-  <version>1.0.0</version>
+  <version>1.0.1</version>
   <vqmver>2.1.0</vqmver>
   <author>www.e-piksel.com</author>
   <file name="admin/controller/common/header.php">
@@ -11,6 +11,15 @@
       <add trim="true">
         <![CDATA[/* E-Piksel */
           $this->data['text_filemanager_page'] = $this->language->get('text_filemanager_page');
+          /* E-Piksel */]]>
+      </add>
+    </operation>
+    <operation>
+      <search position="before">
+        <![CDATA[$this->data['store'] = HTTP_CATALOG;]]>
+      </search>
+      <add trim="true">
+        <![CDATA[/* E-Piksel */
 		  $this->data['filemanager_page'] = $this->url->link('common/filemanager_page', 'token=' . $this->session->data['token'], 'SSL');
           /* E-Piksel */]]>
       </add>
