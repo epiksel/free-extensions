@@ -1,6 +1,6 @@
 <modification>
 	<id>E-Piksel Manufacturer List Image on Admin Page</id>
-	<version>1.0.0</version>
+	<version>1.0.1</version>
 	<vqmver>2.1.0</vqmver>
 	<author>www.e-piksel.com</author>
 	<file name="admin/controller/catalog/manufacturer.php">
@@ -54,7 +54,7 @@
 		</operation>
 		<operation>
 			<search position="before"><![CDATA[<td class="left"><?php echo $manufacturer['name']; ?></td>]]></search>
-			<add><![CDATA[<td class="center" style="width:75px;"><img src="<?php echo $manufacturer['image']; ?>" alt="<?php echo $shortcuts_menu['name']; ?>" style="padding: 1px; border: 1px solid #DDDDDD;" /></td>]]></add>
+			<add><![CDATA[<td class="center" style="width:75px;"><img src="<?php echo $manufacturer['image']; ?>" alt="<?php echo $manufacturer['name']; ?>" style="padding: 1px; border: 1px solid #DDDDDD;" /></td>]]></add>
 		</operation>
 	</file>
 </modification>
