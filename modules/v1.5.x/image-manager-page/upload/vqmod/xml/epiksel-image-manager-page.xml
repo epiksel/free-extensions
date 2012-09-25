@@ -1,6 +1,6 @@
 <modification>
   <id>E-Piksel Image Manager Page</id>
-  <version>1.0.1</version>
+  <version>1.1.0</version>
   <vqmver>2.1.0</vqmver>
   <author>www.e-piksel.com</author>
   <file name="admin/controller/common/header.php">

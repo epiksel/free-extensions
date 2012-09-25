@@ -1,7 +1,7 @@
 === E-Piksel Image Manager Page Install ===
 
 Please first vqmod install.
-All files upload your root directory.
+All files upload your root directory. Overwrite? Yes. Please first backup your files.
 Goto Admin->Users->User Groups and Edit the Top Adminstrator group. Check All boxes.
 - This will ensure you have permissions for all the new files
 

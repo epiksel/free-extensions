@@ -82,3 +82,79 @@
 	cursor: move;
 	position: relative;
 }
+#updateImage a {
+	width: 130px;
+	height: 16px;
+	background: url('../javascript/jquery/ui/themes/ui-lightness/images/ui-bg_gloss-wave_35_f6a828_500x100.png') repeat;
+	color: #fbfbfb;
+	text-align: center;
+	padding: 5px;
+	line-height: 16px;
+	font-size: 115%;
+	font-weight: bold;
+	margin: auto;
+	margin-top:3px;
+	background-position: 0px -50px;
+}
+#updateImage a:hover {
+	background-position: 0px 0px;
+	background-color:#EEE;
+}
+button.btn {
+	float: left;
+	font-size: 10px;
+	margin-top: 6px;
+}
+.fileName {
+	display: block;
+}
+.fileSize {
+	clear: both;
+	display: block;
+}
+.btnExtra {
+	width: 58px;
+	font-size: 9px;
+	margin: 3px;
+}
+#search {
+	width: 50px;
+	padding: 5px;
+	margin: 3px auto;
+	border: 2px solid #ddd;
+	border-radius: 8px;
+	font-size: 20px;
+}
+#searchBox {
+	position: fixed;
+	right: 28px;
+	bottom: 37px;
+	background: #ddd;
+	padding: 5px;
+	border-radius: 3px;
+	box-shadow: -1px -1px 6px #ccc;
+}
+#lblSearch {
+	font-size: 9px;
+	display: block;
+}
+#visualFeedback {
+	width: 240px;
+	position: fixed;
+	right: 30px;
+	top: 35px;
+	border: 2px solid #fbfbfb;
+	z-index: 99;
+	background: #000;
+	border-radius: 8px;
+	box-shadow: 0px 0px 10px #ccc;
+	overflow: hidden;
+	display: none;
+}
+#visualFeedback span {
+	font-size: 12px;
+	color: #fbfbfb;
+	font-weight: bold;
+	padding: 13px;
+	display: block;
+}
