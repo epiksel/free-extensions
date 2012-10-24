@@ -10,13 +10,13 @@ class ControllerProductBestseller extends Controller {
 		if (isset($this->request->get['sort'])) {
 			$sort = $this->request->get['sort'];
 		} else {
-			$sort = 'p.date_added';
+			$sort = 'p.sort_order';
 		}
 
 		if (isset($this->request->get['order'])) {
 			$order = $this->request->get['order'];
 		} else {
-			$order = 'DESC';
+			$order = 'ASC';
 		}
 			 
   		if (isset($this->request->get['page'])) {
@@ -100,9 +100,11 @@ class ControllerProductBestseller extends Controller {
 			
 		foreach ($results as $result) {
 			if ($result['image']) {
-				$image = $this->model_tool_image->resize($result['image'], $this->config->get('config_image_product_width'), $this->config->get('config_image_product_height'));
+				$image = $result['image'];
+			} elseif(file_exists(DIR_IMAGE . 'no_image.jpg')) {
+				$image = 'no_image.jpg';
 			} else {
-				$image = false;
+				$image = 'no_image.png';
 			}
 			
 			if ($this->config->get('config_review')) {
@@ -139,7 +141,7 @@ class ControllerProductBestseller extends Controller {
 						
 			$this->data['products'][] = array(
 				'product_id'  => $result['product_id'],
-				'thumb'       => $image,
+				'thumb'       => $this->model_tool_image->resize($image, $this->config->get('config_image_product_width'), $this->config->get('config_image_product_height')),
 				'name'        => $result['name'],
 				'description' => substr(strip_tags(html_entity_decode($result['description'], ENT_QUOTES, 'UTF-8')), 0, 200) . '..',
 				'price'       => $price,
