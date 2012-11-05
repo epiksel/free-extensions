@@ -1,10 +1,13 @@
-<?php 
+<?php
+/* Developer: Ekrem KAYA
+Web Page: www.e-piksel.com */
+
 class ControllerProductBestseller extends Controller { 	
 	public function index() { 
     	$this->language->load('product/bestseller');
 		
 		$this->load->model('catalog/product');
-		
+		$this->load->model('catalog/bestseller');
 		$this->load->model('tool/image');
 		
 		if (isset($this->request->get['sort'])) {
@@ -95,16 +98,15 @@ class ControllerProductBestseller extends Controller {
 			'start' => ($page - 1) * $limit,
 			'limit' => $limit
 		);
-		$product_total = $this->model_catalog_product->getTotalBestProducts($data);
-		$results = $this->model_catalog_product->getBestProducts($data);
+		
+		$product_total = $this->model_catalog_bestseller->getTotalBestsellersProducts($data);
+		$results = $this->model_catalog_bestseller->getBestsellersProducts($data);
 			
 		foreach ($results as $result) {
 			if ($result['image'] && file_exists(DIR_IMAGE . $result['image'])) {
 				$image = $this->model_tool_image->resize($result['image'], $this->config->get('config_image_product_width'), $this->config->get('config_image_product_height'));
-			} elseif(file_exists(DIR_IMAGE . 'no_image.jpg')) {
-				$image = $this->model_tool_image->resize('no_image.jpg', $this->config->get('config_image_product_width'), $this->config->get('config_image_product_height'));
 			} else {
-				$image = $this->model_tool_image->resize('no_image.png', $this->config->get('config_image_product_width'), $this->config->get('config_image_product_height'));
+				$image = $this->model_tool_image->resize('no_image.jpg', $this->config->get('config_image_product_width'), $this->config->get('config_image_product_height'));
 			}
 			
 			if ($this->config->get('config_review')) {
@@ -164,7 +166,7 @@ class ControllerProductBestseller extends Controller {
 		$this->data['sorts'][] = array(
 			'text'  => $this->language->get('text_default'),
 			'value' => 'p.sort_order-DESC',
-			'href'  => $this->url->link('product/bestseller', 'sort=p.date_added&order=DESC' . $url)
+			'href'  => $this->url->link('product/bestseller', 'sort=p.sort_order&order=DESC' . $url)
 		);
 		
 		$this->data['sorts'][] = array(
@@ -183,14 +185,15 @@ class ControllerProductBestseller extends Controller {
 				'text'  => $this->language->get('text_price_asc'),
 				'value' => 'p.price-ASC',
 				'href'  => $this->url->link('product/bestseller', '&sort=p.price&order=ASC' . $url)
-			); 
+		); 
 
-			$this->data['sorts'][] = array(
-				'text'  => $this->language->get('text_price_desc'),
-				'value' => 'p.price-DESC',
-				'href'  => $this->url->link('product/bestseller', '&sort=p.price&order=DESC' . $url)
-			); 
-			
+		$this->data['sorts'][] = array(
+			'text'  => $this->language->get('text_price_desc'),
+			'value' => 'p.price-DESC',
+			'href'  => $this->url->link('product/bestseller', '&sort=p.price&order=DESC' . $url)
+		); 
+
+		if ($this->config->get('config_review_status')) {
 			$this->data['sorts'][] = array(
 				'text'  => $this->language->get('text_rating_desc'),
 				'value' => 'rating-DESC',
@@ -202,18 +205,29 @@ class ControllerProductBestseller extends Controller {
 				'value' => 'rating-ASC',
 				'href'  => $this->url->link('product/bestseller', '&sort=rating&order=ASC' . $url)
 			);
-			
-			$this->data['sorts'][] = array(
-				'text'  => $this->language->get('text_model_asc'),
-				'value' => 'p.model-ASC',
-				'href'  => $this->url->link('product/bestseller', '&sort=p.model&order=ASC' . $url)
-			);
+		}
 
-			$this->data['sorts'][] = array(
-				'text'  => $this->language->get('text_model_desc'),
-				'value' => 'p.model-DESC',
-				'href'  => $this->url->link('product/bestseller', '&sort=p.model&order=DESC' . $url)
-			);
+		$this->data['sorts'][] = array(
+			'text'  => $this->language->get('text_model_asc'),
+			'value' => 'p.model-ASC',
+			'href'  => $this->url->link('product/bestseller', '&sort=p.model&order=ASC' . $url)
+		);
+
+		$this->data['sorts'][] = array(
+			'text'  => $this->language->get('text_model_desc'),
+			'value' => 'p.model-DESC',
+			'href'  => $this->url->link('product/bestseller', '&sort=p.model&order=DESC' . $url)
+		);
+		
+		$url = '';
+
+		if (isset($this->request->get['sort'])) {
+			$url .= '&sort=' . $this->request->get['sort'];
+		}	
+
+		if (isset($this->request->get['order'])) {
+			$url .= '&order=' . $this->request->get['order'];
+		}
 		
 		$url = '';
 
