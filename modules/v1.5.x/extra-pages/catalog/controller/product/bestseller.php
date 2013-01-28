@@ -3,8 +3,12 @@
 Web Page: www.e-piksel.com */
 
 class ControllerProductBestseller extends Controller { 	
-	public function index() { 
-    	$this->language->load('product/bestseller');
+	public function index() {
+		if (VERSION >= '1.5.5') {
+			$this->load->language('product/bestseller');
+		} else {
+			$this->language->load('product/bestseller');
+		}
 		
 		$this->load->model('catalog/product');
 		$this->load->model('catalog/bestseller');
@@ -35,6 +39,9 @@ class ControllerProductBestseller extends Controller {
 		}
 				    	
 		$this->document->setTitle($this->language->get('heading_title'));
+		if (VERSION >= '1.5.5') {
+			$this->document->addScript('catalog/view/javascript/jquery/jquery.total-storage.min.js');
+		}
 
 		$this->data['breadcrumbs'] = array();
 

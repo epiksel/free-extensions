@@ -1,10 +1,13 @@
 <?php 
 class ControllerProductLatest extends Controller { 	
-	public function index() { 
-    	$this->language->load('product/latest');
+	public function index() {
+		if (VERSION >= '1.5.5') {
+			$this->load->language('product/latest');
+		} else {
+			$this->language->load('product/latest');
+		}
 		
 		$this->load->model('catalog/product');
-		
 		$this->load->model('tool/image');
 		
 		if (isset($this->request->get['sort'])) {
@@ -32,6 +35,9 @@ class ControllerProductLatest extends Controller {
 		}
 				    	
 		$this->document->setTitle($this->language->get('heading_title'));
+		if (VERSION >= '1.5.5') {
+			$this->document->addScript('catalog/view/javascript/jquery/jquery.total-storage.min.js');
+		}
 
 		$this->data['breadcrumbs'] = array();
 
