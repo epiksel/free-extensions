@@ -1,16 +1,20 @@
 <modification>
   <id>E-Piksel Admin Shortcuts Menu Lite</id>
-  <version>1.0.0</version>
+  <version>1.0.1</version>
   <vqmver>2.1.0</vqmver>
   <author>www.e-piksel.com</author>
   <file name="admin/controller/common/home.php">
     <operation>
       <search position="after">
-        <![CDATA[$this->load->language('common/home');]]>
+        <![CDATA[$this->document->setTitle($this->language->get('heading_title'));]]>
       </search>
       <add>
         <![CDATA[/* E-Piksel Admin Shortcuts Menu Begin */
+		if (VERSION >= '1.5.5') {
+			$this->language->load('common/epiksel_admin_shortcuts');
+		} else {
 		$this->load->language('common/epiksel_admin_shortcuts');
+		}
 		$url = '';
 		$this->data['text_emenu_add_product'] = $this->language->get('text_emenu_add_product');
 		$this->data['emenu_add_product'] = $this->url->link('catalog/product/insert', 'token=' . $this->session->data['token'] . $url, 'SSL');
@@ -54,9 +58,9 @@
         <![CDATA[<div class="content">]]>
       </search>
       <add>
-        <![CDATA[<!-- Product Field Begin -->
+        <![CDATA[<!-- Shortcuts Free Begin -->
           <?php include '../epiksel/epiksel_admin_shortcuts/data_file/epiksel_menu.php'; ?>
-          <!-- Product Field End -->]]>
+          <!-- Shortcuts Free End -->]]>
       </add>
     </operation>
   </file>
@@ -66,9 +70,9 @@
         <![CDATA[</head>]]>
       </search>
       <add>
-        <![CDATA[<!-- Product Field Begin -->
+        <![CDATA[<!-- Shortcuts Free Begin -->
 		<link rel="stylesheet" type="text/css" href="../epiksel/epiksel_admin_shortcuts/css/epiksel_menu.css" />
-          <!-- Product Field End -->]]>
+          <!-- Shortcuts Free End -->]]>
       </add>
     </operation>
   </file>

@@ -33,7 +33,7 @@ class ControllerProductLatest extends Controller {
 		} else {
 			$limit = $this->config->get('config_catalog_limit');
 		}
-				    	
+
 		$this->document->setTitle($this->language->get('heading_title'));
 		if (VERSION >= '1.5.5') {
 			$this->document->addScript('catalog/view/javascript/jquery/jquery.total-storage.min.js');
