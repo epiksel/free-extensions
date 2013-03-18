@@ -1,124 +1,44 @@
 <?php
 class ModelCatalogCustomerSupport extends Model {
 	public function getCustomerSupport($customer_support_id) {
-		$sql = "
-			SELECT
-				cs.customer_support_id,
-				cs.customer_support_topic_id,
-				cs.store_id,
-				s.name as store_name,
-				cs.customer_support_1st_category_id,
-				cs.customer_support_2nd_category_id,
-				cs1cd.name AS customer_support_1st_category,
-				cs2cd.name AS customer_support_2nd_category,
-				cs.customer_id,
-				cs.reference,
-				cs.customer_support_status,
-				c.firstname,
-				c.lastname,
-				c.email AS customer_email,
-				cs.subject,
-				cs.enquiry,
-				cs.date_added,
-				cs.date_updated,
-				cs.status
-			FROM " . DB_PREFIX . "customer_support cs
-				LEFT OUTER JOIN `". DB_PREFIX  ."customer_support_category` cs1c ON
-					cs.customer_support_1st_category_id = cs1c.category_id
-					AND cs1c.parent_id = 0
-				LEFT OUTER JOIN `". DB_PREFIX  ."customer_support_category_description` cs1cd ON
-					cs1c.category_id = cs1cd.category_id AND cs1cd.language_id = ".(int)$this->config->get('config_language_id')."
-				LEFT OUTER JOIN `". DB_PREFIX  ."customer_support_category` cs2c ON
-					cs.customer_support_2nd_category_id = cs2c.category_id
-					AND cs2c.parent_id = cs1c.category_id
-				LEFT OUTER JOIN `". DB_PREFIX  ."customer_support_category_description` cs2cd ON
-					cs2c.category_id = cs2cd.category_id AND cs2cd.language_id = ".(int)$this->config->get('config_language_id')."
-				LEFT OUTER JOIN " . DB_PREFIX . "store s
-					ON cs.store_id = s.store_id
-				LEFT OUTER JOIN " . DB_PREFIX . "customer c
-					ON cs.customer_id = c.customer_id
-			WHERE 
-				cs.customer_support_id = '" . (int)$this->db->escape($customer_support_id) . "'
-		";																																					  
+		$sql = "SELECT cs.customer_support_id, cs.customer_support_topic_id, cs.store_id, s.name as store_name, cs.customer_support_1st_category_id, cs.customer_support_2nd_category_id, cs1cd.name AS customer_support_1st_category, cs2cd.name AS customer_support_2nd_category, cs.customer_id, cs.reference, cs.customer_support_status, c.firstname, c.lastname, c.email AS customer_email, cs.subject, cs.enquiry, cs.date_added, cs.date_updated, cs.status FROM " . DB_PREFIX . "customer_support cs LEFT OUTER JOIN `". DB_PREFIX  ."customer_support_category` cs1c ON cs.customer_support_1st_category_id = cs1c.category_id AND cs1c.parent_id = 0 LEFT OUTER JOIN `". DB_PREFIX  ."customer_support_category_description` cs1cd ON cs1c.category_id = cs1cd.category_id AND cs1cd.language_id = ".(int)$this->config->get('config_language_id')." LEFT OUTER JOIN `". DB_PREFIX  ."customer_support_category` cs2c ON cs.customer_support_2nd_category_id = cs2c.category_id AND cs2c.parent_id = cs1c.category_id LEFT OUTER JOIN `". DB_PREFIX  ."customer_support_category_description` cs2cd ON cs2c.category_id = cs2cd.category_id AND cs2cd.language_id = ".(int)$this->config->get('config_language_id')." LEFT OUTER JOIN " . DB_PREFIX . "store s ON cs.store_id = s.store_id LEFT OUTER JOIN " . DB_PREFIX . "customer c ON cs.customer_id = c.customer_id WHERE cs.customer_support_id = '" . (int)$this->db->escape($customer_support_id) . "'";																																					  
 		$query = $this->db->query($sql);																																				
 		return $query->row;	
 	}
 	public function getCustomerSupports($data = array()) {
-		$sql = "
-			SELECT
-				cs.customer_support_id,
-				cs.customer_support_topic_id,
-				cs.store_id,
-				s.name as store_name,
-				cs1cd.name AS customer_support_1st_category,
-				cs2cd.name AS customer_support_2nd_category,
-				cs.customer_id,
-				cs.reference,
-				cs.customer_support_status,
-				c.firstname,
-				c.lastname,
-				cs.subject,
-				cs.enquiry,
-				cs.date_added,
-				cs.date_updated,
-				cs.status
-			FROM " . DB_PREFIX . "customer_support cs
-				LEFT OUTER JOIN `". DB_PREFIX  ."customer_support_category` cs1c ON
-					cs.customer_support_1st_category_id = cs1c.category_id
-					AND cs1c.parent_id = 0
-				LEFT OUTER JOIN `". DB_PREFIX  ."customer_support_category_description` cs1cd ON
-					cs1c.category_id = cs1cd.category_id AND cs1cd.language_id = ".(int)$this->config->get('config_language_id')."
-				LEFT OUTER JOIN `". DB_PREFIX  ."customer_support_category` cs2c ON
-					cs.customer_support_2nd_category_id = cs2c.category_id
-					AND cs2c.parent_id = cs1c.category_id
-				LEFT OUTER JOIN `". DB_PREFIX  ."customer_support_category_description` cs2cd ON
-					cs2c.category_id = cs2cd.category_id AND cs2cd.language_id = ".(int)$this->config->get('config_language_id')."
-				LEFT OUTER JOIN " . DB_PREFIX . "store s
-					ON cs.store_id = s.store_id
-				LEFT OUTER JOIN " . DB_PREFIX . "customer c
-					ON cs.customer_id = c.customer_id
-			WHERE cs.customer_support_id IS NOT NULL
-		";											
+		$sql = "SELECT cs.customer_support_id, cs.customer_support_topic_id, cs.store_id, s.name as store_name, cs1cd.name AS customer_support_1st_category, cs2cd.name AS customer_support_2nd_category, cs.customer_id, cs.reference, cs.customer_support_status, c.firstname, c.lastname, cs.subject, cs.enquiry, cs.date_added, cs.date_updated, cs.status FROM " . DB_PREFIX . "customer_support cs LEFT OUTER JOIN `". DB_PREFIX  ."customer_support_category` cs1c ON cs.customer_support_1st_category_id = cs1c.category_id AND cs1c.parent_id = 0 LEFT OUTER JOIN `". DB_PREFIX  ."customer_support_category_description` cs1cd ON cs1c.category_id = cs1cd.category_id AND cs1cd.language_id = ".(int)$this->config->get('config_language_id')." LEFT OUTER JOIN `". DB_PREFIX  ."customer_support_category` cs2c ON cs.customer_support_2nd_category_id = cs2c.category_id AND cs2c.parent_id = cs1c.category_id LEFT OUTER JOIN `". DB_PREFIX  ."customer_support_category_description` cs2cd ON cs2c.category_id = cs2cd.category_id AND cs2cd.language_id = ".(int)$this->config->get('config_language_id')." LEFT OUTER JOIN " . DB_PREFIX . "store s ON cs.store_id = s.store_id LEFT OUTER JOIN " . DB_PREFIX . "customer c ON cs.customer_id = c.customer_id WHERE cs.customer_support_id IS NOT NULL";											
 		
-		if(isset($data['only_topics']) && $data['only_topics'] == true)
-		{
+		if(isset($data['only_topics']) && $data['only_topics'] == true) {
 			$sql .= " AND cs.customer_support_id = cs.customer_support_topic_id";
 		}																		
 		
-		if(isset($data['except_topics']) && $data['except_topics'] == true)
-		{
+		if(isset($data['except_topics']) && $data['except_topics'] == true) {
 			$sql .= " AND cs.customer_support_id != cs.customer_support_topic_id";
 		}											
 		
-		if(isset($data['customer_support_topic_id']))
-		{
+		if(isset($data['customer_support_topic_id'])) {
 			$sql .= " AND cs.customer_support_topic_id = ". (int)$data['customer_support_topic_id'];
 		}
 									
-		if(isset($data['filter_customer_support_id']) && $data['filter_customer_support_id'] != '')
-		{
+		if(isset($data['filter_customer_support_id']) && $data['filter_customer_support_id'] != '') {
 			$sql .= " AND cs.customer_support_id = ". (int)$data['filter_customer_support_id'];
 		}							
 									
-		if(isset($data['filter_customer_support_status']) && $data['filter_customer_support_status'] != '')
-		{
+		if(isset($data['filter_customer_support_status']) && $data['filter_customer_support_status'] != '') {
 			$sql .= " AND LOWER(cs.customer_support_status) = '". $this->db->escape(strtolower($data['filter_customer_support_status']))."'";
 		}							
 									
-		if(isset($data['filter_cs_category_id']) && $data['filter_cs_category_id'] != '')
-		{
+		if(isset($data['filter_cs_category_id']) && $data['filter_cs_category_id'] != '') {
 			$sql .= " AND (cs.customer_support_1st_category_id = ". (int)$data['filter_cs_category_id']."
 						OR cs.customer_support_2nd_category_id = ". (int)$data['filter_cs_category_id'].")";
 		}							
 									
-		if(isset($data['filter_customer_subject']) && $data['filter_customer_subject'] != '')
-		{
+		if(isset($data['filter_customer_subject']) && $data['filter_customer_subject'] != '') {
 			$sql .= " AND (cs.subject LIKE '%". $this->db->escape($data['filter_customer_subject']) ."%'
 							OR cs.reference LIKE '%". $this->db->escape($data['filter_customer_subject']) ."%')";
 		}							
 		
-		if(isset($data['filter_date_added']) && $data['filter_date_added'] != '')
-		{
+		if(isset($data['filter_date_added']) && $data['filter_date_added'] != '') {
 			$sql .= " AND cs.date_added = '". $this->db->escape($data['filter_date_added'])."'";
 		}
 		
@@ -164,8 +84,7 @@ class ModelCatalogCustomerSupport extends Model {
 		return $query->row['total'];
 	}
 	
-	public function addCustomerSupport($data)
-	{
+	public function addCustomerSupport($data) {
 		$this->db->query("
 			INSERT INTO " . DB_PREFIX . "customer_support
 			SET
@@ -330,12 +249,10 @@ class ModelCatalogCustomerSupport extends Model {
 				AND cs2cd.language_id = '" . (int)$this->config->get('config_language_id') . "' 
 				AND c2s.store_id = '" . (int)$this->config->get('config_store_id') . "'
 		";
-		if(isset($data['customer_support_1st_category_id']) && $data['customer_support_1st_category_id'] != "")
-		{
+		if(isset($data['customer_support_1st_category_id']) && $data['customer_support_1st_category_id'] != "") {
 			$sql .= " AND cs2c.parent_id='". (int)$data['customer_support_1st_category_id'] ."'";
 		}
-		if(isset($data['customer_support_2nd_category_id']) && $data['customer_support_2nd_category_id'] != "")
-		{
+		if(isset($data['customer_support_2nd_category_id']) && $data['customer_support_2nd_category_id'] != "") {
 			$sql .= " AND cs2c.category_id='". (int)$data['customer_support_2nd_category_id'] ."'";
 		}
 		$sql .=" 

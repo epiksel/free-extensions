@@ -37,9 +37,10 @@ class ControllerProductBestseller extends Controller {
 		} else {
 			$limit = $this->config->get('config_catalog_limit');
 		}
-				    	
+
 		$this->document->setTitle($this->language->get('heading_title'));
 		if (VERSION >= '1.5.5') {
+			$this->document->addScript('catalog/view/javascript/jquery/jquery.cookie.js');
 			$this->document->addScript('catalog/view/javascript/jquery/jquery.total-storage.min.js');
 		}
 
@@ -106,23 +107,15 @@ class ControllerProductBestseller extends Controller {
 			'limit' => $limit
 		);
 		
-		$product_total = $this->model_catalog_bestseller->getTotalBestsellersProducts($data);
 		$results = $this->model_catalog_bestseller->getBestsellersProducts($data);
-			
+		$product_total = $this->model_catalog_bestseller->getTotalBestsellersProducts($data);
+
 		foreach ($results as $result) {
 			if ($result['image'] && file_exists(DIR_IMAGE . $result['image'])) {
 				$image = $this->model_tool_image->resize($result['image'], $this->config->get('config_image_product_width'), $this->config->get('config_image_product_height'));
 			} else {
 				$image = $this->model_tool_image->resize('no_image.jpg', $this->config->get('config_image_product_width'), $this->config->get('config_image_product_height'));
 			}
-			
-			if ($this->config->get('config_review')) {
-					$rating = $this->model_catalog_review->getAverageRating($result['product_id']);	
-				} else {
-					$rating = false;
-				}
-					
-				$special = FALSE;
 			
 			if (($this->config->get('config_customer_price') && $this->customer->isLogged()) || !$this->config->get('config_customer_price')) {
 				$price = $this->currency->format($this->tax->calculate($result['price'], $result['tax_class_id'], $this->config->get('config_tax')));
@@ -147,18 +140,24 @@ class ControllerProductBestseller extends Controller {
 			} else {
 				$rating = false;
 			}
+			
+			if (VERSION >= '1.6.0') {
+				$description = utf8_substr(strip_tags(html_entity_decode($result['description'], ENT_QUOTES, 'UTF-8')), 0, $this->config->get('config_list_description_limit')) . '..';
+			} else {
+				$description = utf8_substr(strip_tags(html_entity_decode($result['description'], ENT_QUOTES, 'UTF-8')), 0, 100) . '..';
+			}
 						
 			$this->data['products'][] = array(
 				'product_id'  => $result['product_id'],
 				'thumb'       => $image,
 				'name'        => $result['name'],
-				'description' => utf8_substr(strip_tags(html_entity_decode($result['description'], ENT_QUOTES, 'UTF-8')), 0, 100) . '..',
+				'description' => $description,
 				'price'       => $price,
 				'special'     => $special,
 				'tax'         => $tax,
 				'rating'      => $result['rating'],
 				'reviews'     => sprintf($this->language->get('text_reviews'), (int)$result['reviews']),
-				'href'        => $this->url->link('product/product', $url . '&product_id=' . $result['product_id'])
+				'href'        => $this->url->link('product/product', 'product_id=' . $result['product_id'] . $url)
 			);
 		}
 

@@ -1,4 +1,7 @@
-<?php 
+<?php
+/* Developer: Ekrem KAYA
+Web Page: www.e-piksel.com */
+
 class ControllerProductLatest extends Controller { 	
 	public function index() {
 		if (VERSION >= '1.5.5') {
@@ -13,13 +16,13 @@ class ControllerProductLatest extends Controller {
 		if (isset($this->request->get['sort'])) {
 			$sort = $this->request->get['sort'];
 		} else {
-			$sort = 'p.sort_order';
+			$sort = 'p.date_added';
 		}
 
 		if (isset($this->request->get['order'])) {
 			$order = $this->request->get['order'];
 		} else {
-			$order = 'ASC';
+			$order = 'DESC';
 		}
 			 
   		if (isset($this->request->get['page'])) {
@@ -36,6 +39,7 @@ class ControllerProductLatest extends Controller {
 
 		$this->document->setTitle($this->language->get('heading_title'));
 		if (VERSION >= '1.5.5') {
+			$this->document->addScript('catalog/view/javascript/jquery/jquery.cookie.js');
 			$this->document->addScript('catalog/view/javascript/jquery/jquery.total-storage.min.js');
 		}
 
@@ -60,7 +64,7 @@ class ControllerProductLatest extends Controller {
 		if (isset($this->request->get['page'])) {
 			$url .= '&page=' . $this->request->get['page'];
 		}	
-		
+
 		if (isset($this->request->get['limit'])) {
 			$url .= '&limit=' . $this->request->get['limit'];
 		}
@@ -101,10 +105,10 @@ class ControllerProductLatest extends Controller {
 			'start' => ($page - 1) * $limit,
 			'limit' => $limit
 		);
-			
-		$product_total = $this->model_catalog_product->getTotalProducts($data);
+
 		$results = $this->model_catalog_product->getProducts($data);
-			
+		$product_total = $this->model_catalog_product->getTotalProducts($data);
+
 		foreach ($results as $result) {
 			if ($result['image'] && file_exists(DIR_IMAGE . $result['image'])) {
 				$image = $this->model_tool_image->resize($result['image'], $this->config->get('config_image_product_width'), $this->config->get('config_image_product_height'));
@@ -135,18 +139,24 @@ class ControllerProductLatest extends Controller {
 			} else {
 				$rating = false;
 			}
+			
+			if (VERSION >= '1.6.0') {
+				$description = utf8_substr(strip_tags(html_entity_decode($result['description'], ENT_QUOTES, 'UTF-8')), 0, $this->config->get('config_list_description_limit')) . '..';
+			} else {
+				$description = utf8_substr(strip_tags(html_entity_decode($result['description'], ENT_QUOTES, 'UTF-8')), 0, 100) . '..';
+			}
 						
 			$this->data['products'][] = array(
 				'product_id'  => $result['product_id'],
 				'thumb'       => $image,
 				'name'        => $result['name'],
-				'description' => utf8_substr(strip_tags(html_entity_decode($result['description'], ENT_QUOTES, 'UTF-8')), 0, 100) . '..',
+				'description' => $description,
 				'price'       => $price,
 				'special'     => $special,
 				'tax'         => $tax,
 				'rating'      => $result['rating'],
 				'reviews'     => sprintf($this->language->get('text_reviews'), (int)$result['reviews']),
-				'href'        => $this->url->link('product/product', $url . '&product_id=' . $result['product_id'])
+				'href'        => $this->url->link('product/product', 'product_id=' . $result['product_id'] . $url)
 			);
 		}
 

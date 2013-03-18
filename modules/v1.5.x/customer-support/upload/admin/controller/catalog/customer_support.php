@@ -1,10 +1,8 @@
 <?php
 class ControllerCatalogCustomerSupport extends Controller {
 	private $error = array();
- 	private $customer_support_status = array(
-			  'Open'
-			, 'Closed'
-	);
+ 	private $customer_support_status = array('Open','Closed');
+
 	public function index() {
 		$this->load->language('catalog/customer_support');
 
@@ -478,15 +476,15 @@ class ControllerCatalogCustomerSupport extends Controller {
 				`store_id` INT(11) NULL DEFAULT NULL,
 				`customer_id` INT(11) NULL DEFAULT NULL,
 				`reference` VARCHAR(50) NULL,
-				`subject` TINYTEXT NULL COLLATE 'utf8_bin',
-				`enquiry` TEXT NULL COLLATE 'utf8_bin',
+				`subject` TINYTEXT NULL,
+				`enquiry` TEXT NULL,
 				`date_added` DATETIME NULL DEFAULT NULL,
 				`date_updated` DATETIME NULL DEFAULT NULL,
 				`customer_support_1st_category_id` INT(11) NULL DEFAULT NULL,
 				`customer_support_2nd_category_id` INT(11) NULL DEFAULT NULL,
 				`status` TINYINT(4) NULL DEFAULT '1',
 				PRIMARY KEY (`customer_support_id`)
-			) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+			) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 		");
 		
 		$query = $this->db->query("
@@ -498,23 +496,23 @@ class ControllerCatalogCustomerSupport extends Controller {
 				`date_modified` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00',
 				`status` INT(1) NOT NULL DEFAULT '1',
 				PRIMARY KEY (`category_id`)
-			) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+			) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 		");
 		$query = $this->db->query("
 			CREATE TABLE `".DB_PREFIX."customer_support_category_description` (
 				`category_id` INT(11) NOT NULL,
 				`language_id` INT(11) NOT NULL,
-				`name` VARCHAR(255) NOT NULL DEFAULT '' COLLATE 'utf8_bin',
+				`name` VARCHAR(255) NOT NULL DEFAULT '',
 				PRIMARY KEY (`category_id`, `language_id`),
 				INDEX `name` (`name`)
-			) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+			) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 		");
 		$query = $this->db->query("
 			CREATE TABLE `".DB_PREFIX."customer_support_category_to_store` (
 				`category_id` INT(11) NOT NULL,
 				`store_id` INT(11) NOT NULL,
 				PRIMARY KEY (`category_id`, `store_id`)
-			) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+			) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 		");
 		$this->redirect($this->url->link('catalog/customer_support', 'token=' . $this->session->data['token'], 'SSL'));
 		die;
