@@ -3,6 +3,13 @@
 Web Page: www.e-piksel.com */
 
 class ModelCatalogBestseller extends Model {
+	
+	private $NOW;
+
+	public function __construct($registry) {
+		$this->NOW = date('Y-m-d H:i') . ':00';
+		parent::__construct($registry);
+	}
 
 	public function getBestsellerProducts($data = array()) {
 			
@@ -59,7 +66,7 @@ class ModelCatalogBestseller extends Model {
 	}
 
 	public function getTotalBestsellerProducts() {
-		$sql = "SELECT COUNT(DISTINCT op.product_id) AS total FROM`" . DB_PREFIX . "order_product` op LEFT JOIN `" . DB_PREFIX . "order` o ON (op.order_id = o.order_id) LEFT JOIN `". DB_PREFIX . "product` p ON (op.product_id = p.product_id) LEFT JOIN " . DB_PREFIX . "product_to_store p2s ON (p.product_id = p2s.product_id) WHERE o.order_status_id > '0' AND p.status = '1' AND p.date_available <= NOW()";
+		$sql = "SELECT COUNT(DISTINCT op.product_id) AS total FROM`" . DB_PREFIX . "order_product` op LEFT JOIN `" . DB_PREFIX . "order` o ON (op.order_id = o.order_id) LEFT JOIN `". DB_PREFIX . "product` p ON (op.product_id = p.product_id) LEFT JOIN " . DB_PREFIX . "product_to_store p2s ON (p.product_id = p2s.product_id) WHERE o.order_status_id > '0' AND p.status = '1' AND p.date_available <= '" . $this->NOW . "'";
 		
 		$query = $this->db->query($sql);
 				

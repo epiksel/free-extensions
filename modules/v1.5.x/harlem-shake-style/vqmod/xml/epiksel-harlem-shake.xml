@@ -1,0 +1,19 @@
+<modification>
+  <id>E-Piksel Harlem Shake Style</id>
+  <version>1.0.0</version>
+  <vqmver>2.3.0</vqmver>
+  <author>www.e-piksel.com</author>
+  <file name="catalog/view/theme/*/template/common/header.tpl">
+    <operation>
+      <search position="before">
+        <![CDATA[<?php foreach ($categories as $category) { ?>]]>
+      </search>
+      <add>
+        <![CDATA[<!-- E-Piksel Harlem Shake Style Begin -->
+		<li><a onclick="harlemShake();" title="Harlem Shake Style OpenCart">Harlem Shake</a></li>
+	  <script type="text/javascript" src="epiksel/harlem-shake/harlem-shake.js"></script>
+		<!-- E-Piksel Harlem Shake Style End -->]]>
+      </add>
+    </operation>
+  </file>
+</modification>

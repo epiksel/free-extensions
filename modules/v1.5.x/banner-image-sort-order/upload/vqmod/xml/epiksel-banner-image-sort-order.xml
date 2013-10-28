@@ -1,0 +1,133 @@
+<modification>
+  <id>E-Piksel Banner Image Sort Order</id>
+  <version>1.0.0</version>
+  <vqmver>2.3.0</vqmver>
+  <author>www.e-piksel.com</author>
+  <file name="admin/controller/design/banner.php">
+    <operation>
+      <search position="after">
+        <![CDATA[public function index() {]]>
+      </search>
+      <add>
+        <![CDATA[/* E-Piksel Banner Sort Order Begin */
+		$db_check = $this->db->query("SHOW COLUMNS FROM " . DB_PREFIX . "banner_image LIKE 'sort_order'");
+		if (!$db_check->num_rows) {
+			$this->db->query("ALTER TABLE `" . DB_PREFIX . "banner_image` ADD  `sort_order` int(3) NOT NULL DEFAULT '0' AFTER `image`;");
+		}
+		/* E-Piksel Banner Sort Order End */]]>
+      </add>
+    </operation>
+    <operation>
+      <search position="after">
+        <![CDATA[$this->data['entry_status'] = $this->language->get('entry_status');]]>
+      </search>
+      <add>
+        <![CDATA[/* E-Piksel Banner Sort Order Begin */
+		$this->data['entry_sort_order'] = $this->language->get('entry_sort_order');
+		/* E-Piksel Banner Sort Order End */]]>
+      </add>
+    </operation>
+    <operation>
+      <search position="after">
+        <![CDATA[=> $image,]]>
+      </search>
+      <add>
+        <![CDATA[/* E-Piksel Banner Sort Order Begin */
+		'sort_order'               => $banner_image['sort_order'],
+		/* E-Piksel Banner Sort Order End */]]>
+      </add>
+    </operation>
+  </file>
+  <file name="admin/language/*/design/banner.php">
+    <operation>
+      <search position="after">
+        <![CDATA[// Entry]]>
+      </search>
+      <add trim="true">
+        <![CDATA[/* E-Piksel Banner Sort Order Begin */
+		$_['entry_sort_order']   = 'Sort Order:';
+		/* E-Piksel Banner Sort Order End */]]>
+      </add>
+    </operation>
+  </file>
+  <file name="admin/model/design/banner.php">
+    <operation>
+      <search position="replace">
+        <![CDATA[image = '" .  $this->db->escape($banner_image['image']) . "'");]]>
+      </search>
+      <add trim="true">
+        <![CDATA[image = '" .  $this->db->escape($banner_image['image']) . "', sort_order = '" . (int)$banner_image['sort_order'] . "'");]]>
+      </add>
+    </operation>
+    <operation>
+      <search position="replace">
+        <![CDATA[$banner_image_query = $this->db->query("SELECT * FROM " . DB_PREFIX . "banner_image WHERE banner_id = '" . (int)$banner_id . "'");]]>
+      </search>
+      <add>
+        <![CDATA[/* E-Piksel Banner Sort Order Begin */
+		$banner_image_query = $this->db->query("SELECT * FROM " . DB_PREFIX . "banner_image WHERE banner_id = '" . (int)$banner_id . "' ORDER BY sort_order ASC");
+		/* E-Piksel Banner Sort Order End */]]>
+      </add>
+    </operation>
+    <operation>
+      <search position="after">
+        <![CDATA[$banner_image['link'],]]>
+      </search>
+      <add>
+        <![CDATA[/* E-Piksel Banner Sort Order Begin */
+		'sort_order'               => $banner_image['sort_order'],
+		/* E-Piksel Banner Sort Order End */]]>
+      </add>
+    </operation>
+  </file>
+  <file name="admin/view/template/design/banner_form.tpl">
+    <operation>
+      <search position="after">
+        <![CDATA[<td class="left"><?php echo $entry_image; ?></td>]]>
+      </search>
+      <add>
+        <![CDATA[<!-- E-Piksel Banner Sort Order Begin -->
+		<td class="left"><?php echo $entry_sort_order; ?></td>
+		<!-- E-Piksel Banner Sort Order End -->]]>
+      </add>
+    </operation>
+    <operation>
+      <search position="before">
+        <![CDATA[<td class="left"><a onclick="$('#image-row<?php echo $image_row; ?>').remove();" class="button"><?php echo $button_remove; ?></a></td>]]>
+      </search>
+      <add>
+        <![CDATA[<!-- E-Piksel Banner Sort Order Begin -->
+		<td class="left"><input type="text" name="banner_image[<?php echo $image_row; ?>][sort_order]" value="<?php echo $banner_image['sort_order']; ?>" size="3" /></td>
+		<!-- E-Piksel Banner Sort Order End -->]]>
+      </add>
+    </operation>
+    <operation>
+      <search position="replace">
+        <![CDATA[<td colspan="3"></td>]]>
+      </search>
+      <add>
+        <![CDATA[<!-- E-Piksel Banner Sort Order Begin -->
+		<td colspan="4"></td>
+		<!-- E-Piksel Banner Sort Order End -->]]>
+      </add>
+    </operation>
+    <operation>
+      <search position="before">
+        <![CDATA[html += '<td class="left"><a onclick="$(\'#image-row' + image_row  + '\').remove();" class="button"><?php echo $button_remove; ?></a></td>';]]>
+      </search>
+      <add>
+        <![CDATA[html += '<td class="left"><input type="text" name="banner_image[' + image_row + '][sort_order]" value="" size="3" /></td>';]]>
+      </add>
+    </operation>
+  </file>
+  <file name="catalog/model/design/banner.php">
+    <operation>
+      <search position="replace">
+        <![CDATA[(int)$this->config->get('config_language_id') . "'");]]>
+      </search>
+      <add trim="true">
+        <![CDATA[(int)$this->config->get('config_language_id') . "' ORDER BY bi.sort_order ASC");]]>
+      </add>
+    </operation>
+  </file>
+</modification>
