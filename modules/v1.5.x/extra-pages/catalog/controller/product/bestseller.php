@@ -103,8 +103,8 @@ class ControllerProductBestseller extends Controller {
 			'limit' => $limit
 		);
 
-		$results = $this->model_catalog_bestseller->getBestsellerProducts($data);
-		$product_total = $this->model_catalog_bestseller->getTotalBestsellerProducts($data);
+		$product_total = $this->model_catalog_bestseller->getTotalProductBestsellers($data);
+		$results = $this->model_catalog_bestseller->getProductBestsellers($data);
 
 		foreach ($results as $result) {
 			if ($result['image'] && file_exists(DIR_IMAGE . $result['image'])) {
