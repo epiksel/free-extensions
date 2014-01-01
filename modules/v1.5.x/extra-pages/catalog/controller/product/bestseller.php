@@ -186,39 +186,39 @@ class ControllerProductBestseller extends Controller {
 		$this->data['sorts'][] = array(
 				'text'  => $this->language->get('text_price_asc'),
 				'value' => 'p.price-ASC',
-				'href'  => $this->url->link('product/bestseller', '&sort=p.price&order=ASC' . $url)
+				'href'  => $this->url->link('product/bestseller', 'sort=p.price&order=ASC' . $url)
 		);
 
 		$this->data['sorts'][] = array(
 			'text'  => $this->language->get('text_price_desc'),
 			'value' => 'p.price-DESC',
-			'href'  => $this->url->link('product/bestseller', '&sort=p.price&order=DESC' . $url)
+			'href'  => $this->url->link('product/bestseller', 'sort=p.price&order=DESC' . $url)
 		);
 
 		if ($this->config->get('config_review_status')) {
 			$this->data['sorts'][] = array(
 				'text'  => $this->language->get('text_rating_desc'),
 				'value' => 'rating-DESC',
-				'href'  => $this->url->link('product/bestseller', '&sort=rating&order=DESC' . $url)
+				'href'  => $this->url->link('product/bestseller', 'sort=rating&order=DESC' . $url)
 			);
 
 			$this->data['sorts'][] = array(
 				'text'  => $this->language->get('text_rating_asc'),
 				'value' => 'rating-ASC',
-				'href'  => $this->url->link('product/bestseller', '&sort=rating&order=ASC' . $url)
+				'href'  => $this->url->link('product/bestseller', 'sort=rating&order=ASC' . $url)
 			);
 		}
 
 		$this->data['sorts'][] = array(
 			'text'  => $this->language->get('text_model_asc'),
 			'value' => 'p.model-ASC',
-			'href'  => $this->url->link('product/bestseller', '&sort=p.model&order=ASC' . $url)
+			'href'  => $this->url->link('product/bestseller', 'sort=p.model&order=ASC' . $url)
 		);
 
 		$this->data['sorts'][] = array(
 			'text'  => $this->language->get('text_model_desc'),
 			'value' => 'p.model-DESC',
-			'href'  => $this->url->link('product/bestseller', '&sort=p.model&order=DESC' . $url)
+			'href'  => $this->url->link('product/bestseller', 'sort=p.model&order=DESC' . $url)
 		);
 
 		$url = '';
