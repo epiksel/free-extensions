@@ -1,9 +1,5 @@
 E-Piksel Free Extensions for OpenCart (English)
 Published here free of charge extensions. You can distribute non-commercial purposes.
 
-Please visit download page http://goo.gl/wwnAJ
-
-E-Piksel OpenCart için Ücretsiz Eklentiler (Turkish)
-Burada yayınlanan eklentiler ücretsizdir. Ticari olmayan amaçlarla dağıtabilirsiniz.
-
-Lütfen indirme sayfasını ziyaret ediniz. http://goo.gl/wwnAJ
+E-Piksel OpenCart iÃ§in Ãœcretsiz Eklentiler (Turkish)
+Burada yayÄ±nlanan eklentiler Ã¼cretsizdir. Ticari olmayan amaÃ§larla daÄŸÄ±tabilirsiniz.
