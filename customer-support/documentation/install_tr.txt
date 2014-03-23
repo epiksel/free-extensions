@@ -1,0 +1,13 @@
+=== E-Piksel Müþteri Destek Sayfasý Kurulum ===
+
+Ýlk önce Vqmod kurunuz
+Tüm dosyalarý geçerli opencart dizinine yükleyiniz.
+Yönetim->Satýþ->Desteði Kur seçenðine týklayýn.
+
+Kurulum baþarýlý olursa destek sayfasýna yönlendirilecektir.
+
+OpenCart 1.5.1 buraya gidin
+http://www.opencart.com/index.php?route=extension/extension/info&extension_id=1959
+
+---------------------------
+www.e-piksel.com

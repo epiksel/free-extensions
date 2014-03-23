@@ -1,0 +1,36 @@
+E-Piksel Custom Account Page Extension for OpenCart
+
+===== English Installation Documentation =====
+
+Using FTP, upload the "catalog" folder from the zip to the root of your opencart store
+Overwrite files? Yes
+
+For custom templates
+upload\none vqmod\catalog\view\theme\default in the files -> Uploading into catalog\view\theme\YOUR TEMPLATE
+
+Edit your catalog\view\theme\YOUR TEMPLATE\stylesheet\stylesheet.css file
+
+ADD
+
+.account_left_column {
+	float: left;
+	width: 260px;
+	margin-bottom: 10px;
+	padding: 5px;
+}
+.account_right_column {
+	float: right;
+	width: 260px;
+	margin-bottom: 10px;
+	padding: 5px;
+}
+.account_left_column a, .account_right_column a {
+	font-weight: bold;
+}
+.account_left_column img, .account_right_column img {
+	float: left;
+	margin-right: 8px;
+}
+
+---------------------------
+www.e-piksel.com

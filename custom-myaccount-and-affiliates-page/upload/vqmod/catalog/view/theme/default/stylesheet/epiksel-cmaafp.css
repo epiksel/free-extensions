@@ -1,0 +1,19 @@
+.account_left_column {
+	float: left;
+	width: 260px;
+	margin-bottom: 10px;
+	padding: 5px;
+}
+.account_right_column {
+	float: right;
+	width: 260px;
+	margin-bottom: 10px;
+	padding: 5px;
+}
+.account_left_column a, .account_right_column a {
+	font-weight: bold;
+}
+.account_left_column img, .account_right_column img {
+	float: left;
+	margin-right: 8px;
+}

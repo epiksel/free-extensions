@@ -1,0 +1,14 @@
+E-Piksel HTML Module for OpenCart
+
+===== English Installation Documentation =====
+
+OpenCart? 1.5.1 and later support
+This module is distributed free by www.e-piksel.com
+Install all files to the directory installed OpenCart?.
+For Custom Template -> catalog\view\theme\default directory in the install directory of your template -> catalog\view\theme\YOUR THEME
+Goto Admin -> Users -> User Groups and Edit the Top Adminstrator group. Check All boxes
+Goto Extensions -> Modules -> Install E-Piksel HTML Module
+Module edit and customize
+
+---------------------------
+www.e-piksel.com

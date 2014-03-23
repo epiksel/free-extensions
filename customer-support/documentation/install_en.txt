@@ -1,0 +1,13 @@
+=== E-Piksel Customer Support Page Install ===
+
+Please first vqmod install.
+All files upload your root directory.
+Admin->Sales->Install Support
+
+Directed to the support page If installation was successful
+
+Go to OpenCart 1.5.1
+http://www.opencart.com/index.php?route=extension/extension/info&extension_id=1959
+
+---------------------------
+www.e-piksel.com

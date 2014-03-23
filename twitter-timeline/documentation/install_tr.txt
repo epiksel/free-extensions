@@ -1,0 +1,14 @@
+OpenCart için E-Piksel Twitter Timeline Modülü
+
+===== Turkish Installation Documentation =====
+
+OpenCart 1.5.1 ve sonrasýný destekler.
+Bu modül www.e-piksel.com tarafýndan ücretsiz olarak daðýtýlmaktadýr.
+Tüm dosyalarý opencart kurduðunuz dizine yükleyiniz.
+Özel Þablonlarýnýz için catalog\view\theme\default dizini içindeki dizinleri kendi temanýzýn içine yükleyiniz -> catalog\view\theme\SIZIN TEMENIZ
+Yönetim -> Kullanýcýlar -> Kullanýcý Gruplarý -> Üst Yönetici grubunu düzenle seçeneðine týklayýn ve tüm kutularý seçili hale getiriniz.
+Eklentiler -> Modüller -> E-Piksel Twitter Timeline Modülünü kurun
+Modülü düzenle seçeneðine týklayýnýz ve modül ayarlarýný kendinize göre özelleþtirin.
+
+---------------------------
+www.e-piksel.com

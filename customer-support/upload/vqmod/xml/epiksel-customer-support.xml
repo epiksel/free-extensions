@@ -1,0 +1,109 @@
+<modification>
+  <id>E-Piksel Customer Support</id>
+  <version>3.5.2</version>
+  <vqmver>2.1.0</vqmver>
+  <author>www.e-piksel.com</author>
+  <file name="admin/controller/common/header.php">
+    <operation>
+      <search position="after">
+        <![CDATA[$this->user->getUserName());]]>
+      </search>
+      <add>
+        <![CDATA[$this->load->language('common/customer_support');
+		$this->data['text_customer_support_install'] = $this->language->get('text_customer_support_install');
+		$this->data['text_customer_support'] = $this->language->get('text_customer_support');
+		$this->data['text_customer_support_requests'] = $this->language->get('text_customer_support_requests');
+		$this->data['text_customer_support_category'] = $this->language->get('text_customer_support_category');
+		
+		$this->data['customer_support_install'] = $this->url->link('catalog/customer_support/install_v3', 'token=' . $this->session->data['token'], 'SSL');
+		$this->data['customer_support_requests'] = $this->url->link('catalog/customer_support', 'token=' . $this->session->data['token'], 'SSL');
+		$this->data['customer_support_category'] = $this->url->link('catalog/customer_support_category', 'token=' . $this->session->data['token'], 'SSL');]]>
+      </add>
+    </operation>
+  </file>
+  <file name="admin/view/template/common/header.tpl">
+    <operation>
+      <search position="before">
+        <![CDATA[<li><a href="<?php echo $affiliate; ?>"><?php echo $text_affiliate; ?></a></li>]]>
+      </search>
+      <add>
+        <![CDATA[<?php if (mysql_num_rows( mysql_query("SHOW TABLES LIKE '". DB_PREFIX ."customer_support'")) != '1') { ?>
+		<li><a href="<?php echo $customer_support_install; ?>"><?php echo $text_customer_support_install; ?></a></li>
+		<?php } else { ?>
+		<li><a class="parent"><?php echo $text_customer_support; ?></a>
+            <ul>
+              <li><a href="<?php echo $customer_support_category; ?>"><?php echo $text_customer_support_category; ?></a></li>
+              <li><a href="<?php echo $customer_support_requests; ?>"><?php echo $text_customer_support_requests; ?></a></li>
+            </ul>
+          </li>
+		<?php } ?>]]>
+      </add>
+    </operation>
+  </file>
+  <file name="catalog/controller/common/footer.php">
+    <operation>
+      <search position="before">
+        <![CDATA[$this->data['contact'] = $this->url->link('information/contact');]]>
+      </search>
+      <add>
+        <![CDATA[$this->language->load('module/customer_support');
+		$this->data['text_customer_support'] = $this->language->get('text_customer_support');
+		$this->data['customer_support'] = $this->url->link('account/customer_support', '', 'SSL');]]>
+      </add>
+    </operation>
+  </file>
+  <file name="catalog/view/theme/*/template/common/footer.tpl">
+    <operation>
+      <search position="after">
+        <![CDATA[<li><a href="<?php echo $contact; ?>"><?php echo $text_contact; ?></a></li>]]>
+      </search>
+      <add>
+        <![CDATA[<li><a href="<?php echo $customer_support; ?>"><?php echo $text_customer_support; ?></a></li>]]>
+      </add>
+    </operation>
+  </file>
+  <file name="catalog/controller/account/account.php">
+    <operation>
+      <search position="after">
+        <![CDATA[$this->url->link('account/newsletter', '', 'SSL');]]>
+      </search>
+      <add>
+        <![CDATA[$this->language->load('module/customer_support');
+		$this->data['text_customer_support'] = $this->language->get('text_customer_support');
+		$this->data['customer_support'] = $this->url->link('account/customer_support', '', 'SSL');]]>
+      </add>
+    </operation>
+  </file>
+  <file name="catalog/view/theme/*/template/account/account.tpl">
+    <operation>
+      <search position="after">
+        <![CDATA[<?php echo $text_return; ?></a></li>]]>
+      </search>
+      <add>
+        <![CDATA[<li><a href="<?php echo $customer_support; ?>"><?php echo $text_customer_support; ?></a></li>]]>
+      </add>
+    </operation>
+  </file>
+  <file name="catalog/controller/module/account.php">
+    <operation>
+      <search position="after">
+        <![CDATA[$this->data['text_return'] = $this->language->get('text_return');]]>
+      </search>
+      <add>
+        <![CDATA[$this->language->load('module/customer_support');
+		$this->data['text_customer_support'] = $this->language->get('text_customer_support');
+		$this->data['customer_support'] = $this->url->link('account/customer_support', '', 'SSL');]]>
+      </add>
+    </operation>
+  </file>
+  <file name="catalog/view/theme/*/template/module/account.tpl">
+    <operation>
+      <search position="after">
+        <![CDATA[<?php echo $text_return; ?></a></li>]]>
+      </search>
+      <add>
+        <![CDATA[<li><a href="<?php echo $customer_support; ?>"><?php echo $text_customer_support; ?></a></li>]]>
+      </add>
+    </operation>
+  </file>
+</modification>
