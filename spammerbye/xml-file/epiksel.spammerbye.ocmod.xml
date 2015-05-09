@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<modification>
+	<name>E-Piksel SpammerBye - Spam Referrer Blocker</name>
+	<version>1.0.0</version>
+	<code>E-Piksel SpammerBye - Spam Referrer Blocker EPMOD34</code>
+	<author>Ekrem KAYA</author>
+	<link>http://e-piksel.com</link>
+
+	<file path="system/startup.php">
+		<operation>
+			<search><![CDATA[require_once(DIR_SYSTEM . 'helper/utf8.php');]]></search>
+			<add position="after"><![CDATA[
+		require_once(DIR_SYSTEM . 'helper/spammers.php');
+		]]></add>
+		</operation>
+	</file>
+</modification>

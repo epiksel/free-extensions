@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<modification>
+	<name>E-Piksel OpenSearch SEO</name>
+	<version>1.0.0</version>
+	<code>E-Piksel OpenSearch SEO EPMOD32</code>
+	<author>Ekrem KAYA</author>
+	<link>http://e-piksel.com</link>
+	<file path="catalog/controller/common/header.php">
+		<operation>
+			<search><![CDATA[$data['home'] = $this->url->link('common/home');]]></search>
+			<add position="before"><![CDATA[
+		$data['opensearch'] = $this->url->link('product/opensearch', '', 'SSL');
+		]]></add>
+		</operation>
+	</file>
+	<file path="catalog/view/theme/*/template/common/header.tpl">
+		<operation>
+			<search><![CDATA[<?php foreach ($links as $link) { ?>]]></search>
+			<add position="before"><![CDATA[
+<link href="<?php echo $opensearch; ?>" rel="search" type="application/opensearchdescription+xml" title="<?php echo $name; ?>" />
+		]]></add>
+		</operation>
+	</file>
+</modification>
