@@ -33,7 +33,7 @@ function getBlacklist() {
 	if (is_file(DIR_SYSTEM . 'blacklist.txt')) {
 		$blacklist = DIR_SYSTEM . 'blacklist.txt';
 	} else {
-		$blacklist = 'https://raw.githubusercontent.com/e-piksel/spammerbye/master/blacklist.txt';
+		$blacklist = 'https://raw.githubusercontent.com/epiksel/spammerbye/master/blacklist.txt';
 	}
 
 	$spammers = file($blacklist, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
