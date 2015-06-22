@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<modification>
+
+	<id>E-Piksel NoFollow Link</id>
+	<version>1.0.0</version>
+	<vqmver>2.1.6</vqmver>
+	<author>www.e-piksel.com</author>
+
+	<file name="catalog/controller/product/product.php">
+		<operation>
+			<search position="after"><![CDATA[$this->data['description'] =]]></search>
+			<add><![CDATA[$this->data['description'] = $this->url->nofollow($this->data['description']);]]></add>
+		</operation>
+	</file>
+
+	<file name="system/library/url.php">
+		<operation>
+			<search position="before"><![CDATA[public function link(]]></search>
+			<add><![CDATA[
+	public function nofollow($content, $server = null, $secure = false) {
+		if (!$secure) {
+			$server = $this->domain;
+		} else {
+			$server = $this->ssl;
+		}
+
+		return preg_replace_callback(
+			"#(<a[^>]+?)>#is", function ($mach) use ($server) {
+				return (
+					!($server && strpos($mach[1], $server) !== false) && strpos($mach[1], 'rel=') === false
+				) ? $mach[1] . ' rel="nofollow">' : $mach[0];
+			}, $content
+		);
+	}
+			]]></add>
+		</operation>
+	</file>
+</modification>

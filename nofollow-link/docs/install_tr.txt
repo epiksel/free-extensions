@@ -1,0 +1,18 @@
+// Developer : Ekrem KAYA
+// Website   : http://e-piksel.com
+// Extension : http://weblenti.com/opencart-nofollow-link-s1-p87
+// GitHub    : https://github.com/epiksel/free-extensions
+// Version   : 1.0.0
+
+=== E-Piksel NoFollow Link ===
+
+OpenCart 2.x
+Eklentiler->Eklenti Yükle sayfasýndan xml-file/epiksel-nofollow-link.oc.2.x.ocmod.xml dosyasýný yükleyin.
+Yükleme tamamlandýktan sonra Eklentiler->Modifikasyonlar sayfasýnda yenile butonuna týklayýn.
+
+OpenCart 1.5.x
+VQMod requied. Please first vqmod install. Visit to VQMmod install: www.vqmod.com
+epiksel-nofollow-link.oc.1.5.x.vqmod.xml dosyasýný vqmod/xml içine yükleyin.
+
+--------------------------------------------------
+Teþekkürler,
