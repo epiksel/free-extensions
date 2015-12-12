@@ -1,0 +1,14 @@
+// Developer : Ekrem KAYA
+// Website   : http://e-piksel.com
+// Extension : http://weblenti.com/opencart-summernote-editor-full-toolbar-s1-p49
+// Version   : 1.0.0
+
+=== E-Piksel Summernote Editor Full Toolbar Install ===
+
+All files in "upload" directory your root directory upload
+Upload file xml-file/epiksel-summernote-editor.ocmod.xml on Extensions -> Extension Installer
+Click Refresh button on Extensions->Modifications
+Extensions -> Modules-> E-Piksel Summernote Editor Full Toolbar -> Click to Install.
+
+-------
+Thanks

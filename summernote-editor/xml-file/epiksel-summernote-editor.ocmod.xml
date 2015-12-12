@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<modification>
+	<name>E-Piksel Summernote Editor Full Toolbar</name>
+	<version>1.0.1</version>
+	<code>EPMOD40</code>
+	<author>Ekrem KAYA</author>
+	<link>http://e-piksel.com</link>
+	<file path="admin/controller/common/header.php">
+		<operation>
+			<search><![CDATA[$this->load->language('common/header');]]></search>
+			<add position="after"><![CDATA[
+			$data['codemirror'] = $this->load->controller('common/summernote');
+		]]></add>
+		</operation>
+	</file>
+	<file path="admin/view/template/common/header.tpl">
+		<operation>
+			<search><![CDATA[<link href="view/javascript/summernote/summernote.css" rel="stylesheet" />]]></search>
+			<add position="replace" offset="1"><![CDATA[<?php echo $codemirror; ?>]]></add>
+		</operation>
+	</file>
+
+	<file path="admin/controller/catalog/category.php">
+		<operation>
+			<search><![CDATA[$this->model_design_layout->getLayouts();]]></search>
+			<add position="after"><![CDATA[
+			$this->response->setOutput($this->load->controller('tool/summernote'));
+		]]></add>
+		</operation>
+	</file>
+	<file path="admin/view/template/catalog/category_form.tpl">
+		<operation>
+			<search><![CDATA[$('#input-description<?php echo $language['language_id']; ?>').summernote({]]></search>
+			<add position="replace" offset="2"><![CDATA[getSummernote('#input-description<?php echo $language['language_id']; ?>');]]></add>
+		</operation>
+	</file>
+
+	<file path="admin/controller/catalog/information.php">
+		<operation>
+			<search><![CDATA[$this->model_design_layout->getLayouts();]]></search>
+			<add position="after"><![CDATA[
+			$this->response->setOutput($this->load->controller('tool/summernote'));
+		]]></add>
+		</operation>
+	</file>
+	<file path="admin/view/template/catalog/information_form.tpl">
+		<operation>
+			<search><![CDATA[$('#input-description<?php echo $language['language_id']; ?>').summernote({]]></search>
+			<add position="replace" offset="2"><![CDATA[getSummernote('#input-description<?php echo $language['language_id']; ?>');]]></add>
+		</operation>
+	</file>
+
+	<file path="admin/controller/catalog/product.php">
+		<operation>
+			<search><![CDATA[$this->model_design_layout->getLayouts();]]></search>
+			<add position="after"><![CDATA[
+			$this->response->setOutput($this->load->controller('tool/summernote'));
+		]]></add>
+		</operation>
+	</file>
+	<file path="admin/view/template/catalog/product_form.tpl">
+		<operation>
+			<search><![CDATA[$('#input-description<?php echo $language['language_id']; ?>').summernote({height: 300});]]></search>
+			<add position="replace"><![CDATA[getSummernote('#input-description<?php echo $language['language_id']; ?>');]]></add>
+		</operation>
+	</file>
+
+	<file path="admin/controller/marketing/contact.php">
+		<operation>
+			<search><![CDATA[$this->model_customer_customer_group->getCustomerGroups();]]></search>
+			<add position="after"><![CDATA[
+			$this->response->setOutput($this->load->controller('tool/summernote'));
+		]]></add>
+		</operation>
+	</file>
+	<file path="admin/view/template/marketing/contact.tpl">
+		<operation>
+			<search><![CDATA[$('#input-message').summernote({]]></search>
+			<add position="replace" offset="2"><![CDATA[getSummernote('#input-message');]]></add>
+		</operation>
+	</file>
+
+	<file path="admin/controller/module/html.php">
+		<operation>
+			<search><![CDATA[$this->load->controller('common/header');]]></search>
+			<add position="before"><![CDATA[
+			$this->response->setOutput($this->load->controller('tool/summernote'));
+		]]></add>
+		</operation>
+	</file>
+	<file path="admin/view/template/module/html.tpl">
+		<operation>
+			<search><![CDATA[$('#input-description<?php echo $language['language_id']; ?>').summernote({height: 300});]]></search>
+			<add position="replace"><![CDATA[getSummernote('#input-description<?php echo $language['language_id']; ?>');]]></add>
+		</operation>
+	</file>
+
+	<file path="catalog/controller/information/information.php">
+		<operation>
+			<search><![CDATA[$information_info['title'];]]></search>
+			<add position="after"><![CDATA[
+			$this->response->setOutput($this->load->controller('tool/summernote'));
+		]]></add>
+		</operation>
+	</file>
+
+	<file path="catalog/view/theme/*/template/information/information.tpl">
+		<operation>
+			<search><![CDATA[<?php echo $footer; ?>]]></search>
+			<add position="before"><![CDATA[<script type="text/javascript"><!--
+$(document).ready(function() {
+  prettyPrint();
+});
+//--></script>]]></add>
+		</operation>
+	</file>
+
+	<file path="catalog/controller/module/html.php">
+		<operation>
+			<search><![CDATA[if (isset($setting['module_description'][$this->config->get('config_language_id')])) {]]></search>
+			<add position="after"><![CDATA[
+			$this->response->setOutput($this->load->controller('tool/summernote'));
+		]]></add>
+		</operation>
+	</file>
+
+	<file path="catalog/view/theme/*/template/module/html.tpl">
+		<operation>
+			<search><![CDATA[<?php echo $html; ?>]]></search>
+			<add position="after"><![CDATA[<script type="text/javascript"><!--
+$(document).ready(function() {
+  prettyPrint();
+});
+//--></script>]]></add>
+		</operation>
+	</file>
+
+	<file path="catalog/controller/product/category.php">
+		<operation>
+			<search><![CDATA[$data['limit'] = $limit;]]></search>
+			<add position="after"><![CDATA[
+			$this->response->setOutput($this->load->controller('tool/summernote'));
+		]]></add>
+		</operation>
+	</file>
+
+	<file path="catalog/view/theme/*/template/product/category.tpl">
+		<operation>
+			<search><![CDATA[<?php echo $footer; ?>]]></search>
+			<add position="before"><![CDATA[<script type="text/javascript"><!--
+$(document).ready(function() {
+  prettyPrint();
+});
+//--></script>]]></add>
+		</operation>
+	</file>
+
+	<file path="catalog/controller/product/product.php">
+		<operation>
+			<search><![CDATA[$this->model_catalog_product->updateViewed($this->request->get['product_id']);]]></search>
+			<add position="after"><![CDATA[
+			$this->response->setOutput($this->load->controller('tool/summernote'));
+		]]></add>
+		</operation>
+	</file>
+
+	<file path="catalog/view/theme/*/template/product/product.tpl">
+		<operation>
+			<search><![CDATA[<?php echo $footer; ?>]]></search>
+			<add position="before"><![CDATA[<script type="text/javascript"><!--
+$(document).ready(function() {
+  prettyPrint();
+});
+//--></script>]]></add>
+		</operation>
+	</file>
+</modification>

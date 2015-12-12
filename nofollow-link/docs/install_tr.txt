@@ -11,7 +11,7 @@ Eklentiler->Eklenti Yükle sayfasýndan xml-file/epiksel-nofollow-link.oc.2.x.ocmo
 Yükleme tamamlandýktan sonra Eklentiler->Modifikasyonlar sayfasýnda yenile butonuna týklayýn.
 
 OpenCart 1.5.x
-VQMod requied. Please first vqmod install. Visit to VQMmod install: www.vqmod.com
+vQmod gereklidir. Lütfen ilk önce vqmod kurunuz. vQmod kurulumu için ziyaret ediniz: www.vqmod.com
 epiksel-nofollow-link.oc.1.5.x.vqmod.xml dosyasýný vqmod/xml içine yükleyin.
 
 --------------------------------------------------
